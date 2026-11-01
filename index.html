@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Shubham Pandey · Generative AI Engineer</title>
-<meta name="description" content="Shubham Pandey, Generative AI Engineer. I build LLM systems that check their own work: retrieval, document extraction, evaluation and guardrails. Try Samajh and the Hindi cricket commentary engine right on the page.">
+<meta name="description" content="Shubham Pandey, Generative AI Engineer. I build LLM systems that check their own work: retrieval, document extraction, evaluation and guardrails. Try Samajh, Gita Sarathi and the Hindi cricket commentary engine right on the page.">
 <meta property="og:title" content="Shubham Pandey · Generative AI Engineer">
 <meta property="og:description" content="LLM systems that check their own work. Try the projects right on the page.">
 <meta property="og:type" content="website">
@@ -17,7 +17,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Hanken+Grotesk:ital,wght@0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+Devanagari:wght@400;500;700&family=Tiro+Devanagari+Hindi&display=swap">
 <style>
-/* Concept: the page proves the work. A dark "fact-check console" hero, then two hands-on demos (Samajh diagnosis, cricket commentary) before any résumé-style content. Single column, max 1080px. */
+/* Concept: the page proves the work. A dark "fact-check console" hero, then hands-on demos (Samajh diagnosis, Gita Sarathi verses, cricket commentary) before any résumé-style content. Single column, max 1080px. */
 :root{
   --paper:#F3F4F8; --surface:#FFFFFF; --ink:#0D1224; --muted:#596079; --line:#DCE0EA; --soft:#EEF0F6;
   --amber:#F59E0B; --amber-ink:#9A5B00; --amber-soft:#FFF4DE;
@@ -58,11 +58,11 @@ nav .wrap{display:flex;align-items:center;justify-content:space-between;height:5
 .brand{font-family:var(--f-display);font-weight:800;font-size:16px;text-decoration:none;white-space:nowrap;display:flex;align-items:center;gap:9px}
 .brand i{width:9px;height:9px;border-radius:50%;background:var(--ok);box-shadow:0 0 0 4px color-mix(in srgb,var(--ok) 25%,transparent)}
 nav ul{display:flex;align-items:center;gap:22px;list-style:none;margin:0;padding:0;font-size:14px}
-nav ul a{color:var(--night-muted);text-decoration:none}
+nav ul a{color:var(--night-muted);text-decoration:none;white-space:nowrap}
 nav ul a:hover{color:var(--night-fg)}
 .nav-cta{background:var(--amber);color:#1A1200 !important;padding:6px 12px;border-radius:7px;font-weight:700}
 @media (max-width:640px){nav ul{gap:12px;font-size:13px} nav ul .nav-opt{display:none}}
-@media (max-width:440px){nav ul .opt2{display:none} .brand{font-size:15px}}
+@media (max-width:440px){nav ul .opt2,nav ul .long{display:none} .brand{font-size:15px}}
 
 /* ───── hero ───── */
 .hero{background:var(--night);color:var(--night-fg);position:relative;overflow:hidden}
@@ -219,13 +219,21 @@ section + section{border-top:1px solid var(--line)}
 .fade{animation:fade .35s ease}
 @keyframes fade{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
 
-/* parth */
-.parth{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:24px;align-items:center;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:26px;margin-top:36px}
-@media (max-width:760px){.parth{grid-template-columns:1fr}}
-.parth h3{font-size:24px;font-weight:800}
-.parth p{color:var(--muted);margin-top:8px;max-width:62ch}
-.parth .stack{font-family:var(--f-mono);font-size:12.5px;color:var(--muted);margin-top:12px}
-.parth .om{font-family:var(--f-hi-display);font-size:64px;line-height:1;color:var(--amber);opacity:.9}
+/* gita sarathi */
+.sarathi .demo-body{padding:18px 20px 20px}
+.feel{display:flex;flex-wrap:wrap;gap:8px}
+.feel button{border:1.5px solid var(--line);background:var(--surface);color:var(--ink);border-radius:99px;padding:6px 13px;font-size:14.5px;line-height:1.35}
+.feel button:hover{border-color:var(--muted)}
+.feel button[aria-pressed="true"]{border-color:var(--amber);background:var(--amber-soft)}
+.verse{margin-top:16px;border-radius:14px;padding:18px 18px 16px;background:linear-gradient(165deg,#0F1733,#0B1022);color:#E9ECF8;border:1px solid #232D56}
+.verse-head{display:flex;flex-wrap:wrap;justify-content:space-between;gap:4px 12px;font-family:var(--f-mono);font-size:12px;color:#98A3CC}
+.verse-head b{color:#F7C46B;font-weight:500}
+.shloka{font-family:var(--f-hi-display);font-size:clamp(19px,2.4vw,23px);line-height:1.7;text-align:center;white-space:pre-line;margin:14px 0 6px;overflow-wrap:anywhere}
+.translit{font-style:italic;font-size:14px;color:#A9B2D6;text-align:center;white-space:pre-line;overflow-wrap:anywhere}
+.trans{margin-top:14px;padding:12px 14px;border-radius:10px;background:rgba(255,255,255,.06);font-size:15.5px;line-height:1.55}
+.trans small{display:block;margin-top:6px;font-size:12px;color:#98A3CC}
+.verse-foot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:6px 12px;margin-top:12px;font-family:var(--f-mono);font-size:12px;color:#7EE2AE}
+.verse-foot span:last-child{color:#98A3CC}
 
 /* experience */
 .timeline{margin-top:36px;display:grid;gap:0}
@@ -274,6 +282,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px}
     <a class="brand" href="#top"><i aria-hidden="true"></i>Shubham Pandey</a>
     <ul>
       <li><a href="#samajh">Samajh</a></li>
+      <li><a href="#sarathi"><span class="long">Gita </span>Sarathi</a></li>
       <li class="opt2"><a href="#cricket">Cricket AI</a></li>
       <li class="nav-opt"><a href="#experience">Experience</a></li>
       <li><a class="nav-cta" href="resume.pdf">Resume</a></li>
@@ -307,7 +316,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px}
           <li class="claim ok"><span class="mark" aria-hidden="true">✓</span><span class="text">Cut repeat-query latency from 35 s to 2 s with LLM response caching.<span class="src"><b>verified</b> · sales RAG, in production · <a href="#experience">proof ↓</a></span></span></li>
           <li class="claim ok"><span class="mark" aria-hidden="true">✓</span><span class="text">Raised document-extraction accuracy from 60% to 85%+.<span class="src"><b>verified</b> · finance document pilot · <a href="#experience">proof ↓</a></span></span></li>
           <li class="claim ok"><span class="mark" aria-hidden="true">✓</span><span class="text">Built Samajh: tests that show <i>why</i> students go wrong.<span class="src"><b>verified</b> · live project · <a href="#samajh">try it ↓</a></span></span></li>
-          <li class="claim ok"><span class="mark" aria-hidden="true">✓</span><span class="text">Built a real-time Hindi cricket commentary engine with LLM guardrails.<span class="src"><b>verified</b> · project · <a href="#cricket">see it ↓</a></span></span></li>
+          <li class="claim ok"><span class="mark" aria-hidden="true">✓</span><span class="text">Built Gita Sarathi: spoken answers grounded in the Gita's exact verses.<span class="src"><b>verified</b> · live project · <a href="#sarathi">try it ↓</a></span></span></li>
         </ol>
         <div class="tally" id="tally"><span><b>5</b> claims</span><span class="zero"><b>5</b> verified</span><span><b>0</b> without proof</span></div>
       </div>
@@ -378,10 +387,67 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px}
   </div>
 </section>
 
+<!-- ───────────── GITA SARATHI ───────────── -->
+<section id="sarathi" class="sarathi">
+  <div class="wrap">
+    <div class="eyebrow">Project 02 · Gita Sarathi (गीता सारथी, "the charioteer")</div>
+    <h2 class="sec-title">Say what you're going through. Hear what the Gita actually says.</h2>
+    <p class="sec-intro">Speak in Hindi, Hinglish or English and the answer is spoken back: exact verses, who said them to whom, and what they mean for you. The model never writes scripture; it only picks verses, and their text is copied from a verified source. Pick a feeling to see which verses the app's own retriever chooses.</p>
+    <div class="pills"><span class="pill live">Live</span><span class="pill">Voice in, voice out</span><span class="pill">हिंदी · Hinglish · English</span></div>
+
+    <div class="grid-2">
+      <div class="demo" id="gita">
+        <div class="demo-head"><span class="label">What are you carrying?</span><span class="label">retriever output</span></div>
+        <div class="demo-body">
+          <div class="feel" id="g-feel" role="group" aria-label="Example questions"></div>
+          <div class="verse" aria-live="polite">
+            <div class="verse-head"><span><b id="g-ref">BG 2.62</b> · <span id="g-ch"></span></span><span id="g-who"></span></div>
+            <p class="shloka" lang="sa" id="g-sa"></p>
+            <p class="translit" id="g-tl"></p>
+            <div class="trans"><span id="g-tr"></span><small>Swami Swarupananda, 1909 · public domain · verified against 4 scans</small></div>
+            <div class="verse-foot"><span id="g-sit"></span><span id="g-also"></span></div>
+          </div>
+          <div class="q-foot"><span>Verses exactly as the retriever picks them for each question. In the app, an explanation in your language is written, checked by a second model, then spoken.</span></div>
+        </div>
+      </div>
+
+      <div>
+        <h3 style="font-size:22px;font-weight:800">How an answer stays true to the text</h3>
+        <ol class="pipe">
+          <li class="gate"><span class="n">1</span><div><b>Hear &amp; triage</b><span>One Gemini call transcribes and understands the speech. A crisis check runs first and answers with helplines, not verses.</span></div></li>
+          <li><span class="n">2</span><div><b>Retrieve</b><span>BM25 plus an index of 21 life situations, over verified verses only, preferring Krishna's teaching.</span></div></li>
+          <li class="gate"><span class="n">3</span><div><b>Select, write, verify</b><span>The model may cite only retrieved verses. Code rejects invented quotations and the wrong language; a second model checks the meaning. Anything that fails falls back to the verses alone.</span></div></li>
+          <li><span class="n">4</span><div><b>Speak</b><span>The spoken script is built only from the checked answer, in one language, and read with Gemini TTS.</span></div></li>
+        </ol>
+        <div class="facts">
+          <div class="fact"><b>487 / 701</b><span>verses with a verified translation</span></div>
+          <div class="fact"><b>4</b><span>scans voted on every word (OCR)</span></div>
+          <div class="fact"><b>86</b><span>automated tests</span></div>
+        </div>
+        <ul class="more">
+          <li>The 1909 translation was rebuilt from four archive.org scans by OCR consensus; a verse is shown only once the scans agree.</li>
+          <li>Real-time conversation (beta) on Gemini Live with locked single-use tokens and echo protection for phone speakers.</li>
+          <li>Runs on a key shared with Samajh, so it has daily AI budgets, per-visitor limits, an answer cache and signed TTS.</li>
+        </ul>
+        <div class="links">
+          <a href="https://parth-gita-assistant-1.onrender.com/" rel="noopener">Talk to it →</a>
+          <a href="https://github.com/AmShubh45/parth-gita-assistant/tree/v2" rel="noopener">Code on GitHub</a>
+          <span class="note">Python · FastAPI · Gemini STT, TTS &amp; Live · Docker · Playwright</span>
+        </div>
+      </div>
+    </div>
+
+    <figure class="shot">
+      <div class="frame"><picture><source srcset="assets/gita-sarathi.webp" type="image/webp"><img src="assets/gita-sarathi.jpg" width="1280" height="800" loading="lazy" alt="Gita Sarathi home screen: a microphone button to ask by voice, a text box, options for spoken answers, conversation mode, Live beta and answer language, and example questions in Hindi, Hinglish and English."></picture></div>
+      <figcaption>Tap the mic and talk. Answers are spoken back; conversation mode listens again for the next question.</figcaption>
+    </figure>
+  </div>
+</section>
+
 <!-- ───────────── CRICKET ───────────── -->
 <section id="cricket">
   <div class="wrap">
-    <div class="eyebrow">Project 02 · Real-time AI commentary</div>
+    <div class="eyebrow">Project 03 · Real-time AI commentary</div>
     <h2 class="sec-title">Ball by ball, in Hindi. Every line fact-checked against the score.</h2>
     <p class="sec-intro">A live engine that turns match data into spoken Hindi commentary with four AI personas. These are real lines the engine generated during a scripted demo match; step through them.</p>
 
@@ -431,16 +497,6 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px}
       <figcaption>The full broadcast overlay that streamers add to OBS, during the same demo replay.</figcaption>
     </figure>
 
-    <div class="parth">
-      <div>
-        <div class="eyebrow">Project 03 · Parth</div>
-        <h3 style="margin-top:8px">A voice assistant grounded in the Bhagavad Gita</h3>
-        <p>Speak a question and get guidance drawn from the Gita's verses, answered in Hindi. Verses are embedded with Gemini and matched by cosine similarity, with a keyword fallback; voice runs in real time over WebSockets with the Gemini Live API.</p>
-        <div class="stack">Node.js · Express · WebSockets · Gemini (Live API, embeddings) · Docker</div>
-        <div class="links"><a href="https://parth-gita-assistant.onrender.com/" rel="noopener">Try it →</a><a href="https://github.com/AmShubh45/parth-gita-assistant" rel="noopener">Code on GitHub</a></div>
-      </div>
-      <div class="om" aria-hidden="true">ॐ</div>
-    </div>
   </div>
 </section>
 
@@ -626,7 +682,40 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px}
   $("q-next").addEventListener("click", () => { qi = (qi + 1) % QS.length; picked = null; renderQuiz(); });
   renderQuiz();
 
-  /* ── 3. Cricket board (lines generated by the engine from the demo match) ── */
+  /* ── 3. Gita Sarathi: verses as the app's retriever picks them for each question (verse text from its knowledge base) ── */
+  const GV = {
+    "BG 2.62": { sa: "ध्यायतो विषयान्पुंसः सङ्गस्तेषूपजायते।\nसङ्गात् संजायते कामः कामात्क्रोधोऽभिजायते।।",
+      tl: "dhyāyato viṣhayān puṁsaḥ saṅgas teṣhūpajāyate\nsaṅgāt sañjāyate kāmaḥ kāmāt krodho ’bhijāyate",
+      tr: "Thinking of objects, attachment to them is formed in a man. From attachment longing, and from longing anger grows.", ch: "Chapter 2 · Sankhya Yoga" },
+    "BG 2.47": { sa: "कर्मण्येवाधिकारस्ते मा फलेषु कदाचन।\nमा कर्मफलहेतुर्भूर्मा ते सङ्गोऽस्त्वकर्मणि।।",
+      tl: "karmaṇy-evādhikāras te mā phaleṣhu kadāchana\nmā karma-phala-hetur bhūr mā te saṅgo ’stvakarmaṇi",
+      tr: "Thy right is to work only; but never to the fruits thereof. Be thou not the producer of the fruits of (thy) actions; neither let thy attachment be towards inaction.", ch: "Chapter 2 · Sankhya Yoga" },
+    "BG 2.12": { sa: "न त्वेवाहं जातु नासं न त्वं नेमे जनाधिपाः।\nन चैव न भविष्यामः सर्वे वयमतः परम्।।",
+      tl: "na tvevāhaṁ jātu nāsaṁ na tvaṁ neme janādhipāḥ\nna chaiva na bhaviṣhyāmaḥ sarve vayamataḥ param",
+      tr: "It is not that I have never existed, nor thou, nor these kings. Nor is it that we shall cease to exist in the future.", ch: "Chapter 2 · Sankhya Yoga" },
+    "BG 3.35": { sa: "श्रेयान्स्वधर्मो विगुणः परधर्मात्स्वनुष्ठितात्।\nस्वधर्मे निधनं श्रेयः परधर्मो भयावहः।।",
+      tl: "śhreyān swa-dharmo viguṇaḥ para-dharmāt sv-anuṣhṭhitāt\nswa-dharme nidhanaṁ śhreyaḥ para-dharmo bhayāvahaḥ",
+      tr: "Better is one’s own Dharma, (though) imperfect, than the Dharma of another well-performed. Better is death in one’s own Dharma: the Dharma of another is fraught with fear.", ch: "Chapter 3 · Karma Yoga" }
+  };
+  const GQ = [
+    { q: "मुझे बहुत गुस्सा आता है, क्या करूँ?", hi: true, top: "BG 2.62", also: "BG 2.63", sit: "anger" },
+    { q: "Exam ke result ki bahut chinta hai", top: "BG 2.47", also: "BG 2.49", sit: "results anxiety" },
+    { q: "My father passed away and I can't cope", top: "BG 2.12", also: "BG 2.14", sit: "grief & loss" },
+    { q: "मैं हमेशा दूसरों से अपनी तुलना करता हूँ", hi: true, top: "BG 3.35", also: "BG 18.47", sit: "comparison" }
+  ];
+  const feel = $("g-feel");
+  function renderVerse(i, animate) {
+    const g = GQ[i], v = GV[g.top];
+    [...feel.children].forEach((b, j) => b.setAttribute("aria-pressed", String(j === i)));
+    $("g-ref").textContent = g.top; $("g-ch").textContent = v.ch; $("g-who").textContent = "Krishna → Arjuna";
+    $("g-sa").textContent = v.sa; $("g-tl").textContent = v.tl; $("g-tr").textContent = v.tr;
+    $("g-sit").textContent = `✓ situation: ${g.sit}`; $("g-also").textContent = `also chosen: ${g.also}`;
+    if (animate) ["g-sa", "g-tr"].forEach(id => { const el = $(id); el.classList.remove("fade"); void el.offsetWidth; el.classList.add("fade"); });
+  }
+  GQ.forEach((g, i) => { const b = document.createElement("button"); b.type = "button"; b.textContent = g.q; if (g.hi) b.lang = "hi"; b.addEventListener("click", () => renderVerse(i, true)); feel.appendChild(b); });
+  renderVerse(0, false);
+
+  /* ── 4. Cricket board (lines generated by the engine from the demo match) ── */
   const BALLS = [
     { over: "15.2", kind: "W", label: "wicket", runs: "131/4", need: [40, 28], call: "आउट!",
       line: "हवा में गई… और हेड ने लपक लिया! गिल 44 रन बनाकर आउट। स्टार्क को मिली बड़ी कामयाबी। भारत अब 131 रन पर 4 विकेट।",
@@ -674,7 +763,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px}
   $("b-prev").addEventListener("click", () => { bi = (bi - 1 + BALLS.length) % BALLS.length; renderBall(true); });
   renderBall(false);
 
-  /* ── 4. Copy email ── */
+  /* ── 5. Copy email ── */
   $("copy-btn").addEventListener("click", async (e) => {
     const btn = e.currentTarget, el = $("email");
     try { await navigator.clipboard.writeText(el.textContent); btn.textContent = "Copied ✓"; }
