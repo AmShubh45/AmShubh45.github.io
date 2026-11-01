@@ -1,0 +1,342 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Shubham Pandey · Generative AI Engineer</title>
+<meta name="description" content="Shubham Pandey, Generative AI Engineer. LLM systems with retrieval, document extraction, evaluation and guardrails. Projects: Samajh, live Hindi cricket commentary, Parth.">
+<meta property="og:title" content="Shubham Pandey · Generative AI Engineer">
+<meta property="og:description" content="LLM systems that check their own work: retrieval, document extraction, evaluation and guardrails.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://amshubh45.github.io/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%232F3BD9'/%3E%3Ctext x='32' y='43' font-family='Arial,sans-serif' font-size='30' font-weight='700' fill='white' text-anchor='middle'%3ESP%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800&family=Public+Sans:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a single reading column (max 1040px) with a sticky slim nav; project cases alternate text and screenshot on wide screens and stack on phones. */
+:root{
+  --bg:#F6F7FA; --surface:#FFFFFF; --fg:#151823; --muted:#5B6275; --line:#DFE3EC;
+  --accent:#2F3BD9; --accent-soft:#E8EAFC; --live:#137A4B; --live-soft:#E0F2E9; --warn:#8A5A00; --warn-soft:#FBF0D9;
+  --f-display:"Archivo", "Segoe UI", system-ui, sans-serif;
+  --f-body:"Public Sans", "Segoe UI", system-ui, sans-serif;
+  --f-mono:"JetBrains Mono", ui-monospace, Menlo, Consolas, monospace;
+  color-scheme:light;
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#0F1117; --surface:#171A23; --fg:#E8EAF1; --muted:#9AA1B4; --line:#2A2F3D;
+    --accent:#8C95FF; --accent-soft:#1F2340; --live:#55C98F; --live-soft:#13291E; --warn:#E9B957; --warn-soft:#2D240F;
+    color-scheme:dark;
+  }
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.6 var(--f-body);-webkit-font-smoothing:antialiased}
+a{color:var(--accent);text-underline-offset:3px}
+a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
+img{max-width:100%;height:auto;display:block}
+.wrap{max-width:1040px;margin:0 auto;padding-inline:20px}
+h1,h2,h3{font-family:var(--f-display);margin:0;text-wrap:balance;letter-spacing:-.015em}
+p{margin:0}
+
+/* nav */
+nav{position:sticky;top:0;z-index:5;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;height:56px}
+nav .me{font-family:var(--f-display);font-weight:800;font-size:17px;color:var(--fg);text-decoration:none;white-space:nowrap}
+nav ul{display:flex;gap:20px;list-style:none;margin:0;padding:0;font-size:14.5px}
+nav ul a{color:var(--muted);text-decoration:none}
+nav ul a:hover{color:var(--fg)}
+@media (max-width:560px){nav ul{gap:12px;font-size:13.5px} nav ul li.opt{display:none}}
+@media (max-width:380px){nav .me{font-size:15px}}
+
+/* hero */
+.hero{padding-block:72px 48px;display:grid;gap:22px}
+.role{font-family:var(--f-mono);font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--accent)}
+.hero h1{font-size:clamp(38px,6.4vw,64px);font-weight:800;line-height:1.02}
+.lede{font-size:clamp(18px,2.2vw,21px);color:var(--muted);max-width:60ch}
+.lede strong{color:var(--fg);font-weight:600}
+.cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:6px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:10px 16px;border-radius:8px;border:1px solid var(--line);background:var(--surface);color:var(--fg);font-weight:600;font-size:15px;text-decoration:none}
+.btn:hover{border-color:var(--accent)}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:#fff}
+@media (prefers-color-scheme: dark){.btn.primary{color:#0F1117}}
+.facts{display:flex;flex-wrap:wrap;gap:8px 22px;font-size:14px;color:var(--muted);margin-top:4px}
+.facts b{color:var(--fg);font-weight:600}
+
+/* sections */
+section{padding-block:56px;border-top:1px solid var(--line)}
+.sec-head{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:8px 20px;margin-bottom:32px}
+.sec-head h2{font-size:clamp(26px,3.4vw,34px);font-weight:800}
+.sec-head p{color:var(--muted);max-width:56ch;font-size:15px}
+
+/* project case */
+.case{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:36px;align-items:start;padding-block:28px}
+.case + .case{border-top:1px dashed var(--line)}
+.case.flip .shot{order:-1}
+.case.solo{grid-template-columns:minmax(0,1fr);max-width:720px}
+@media (max-width:860px){.case{grid-template-columns:1fr;gap:22px}.case.flip .shot{order:0}}
+.case h3{font-size:clamp(22px,2.6vw,28px);font-weight:800;margin-bottom:6px}
+.tag-row{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px}
+.pill{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.04em;padding:3px 9px;border-radius:99px;font-weight:500;white-space:nowrap}
+.pill.live{background:var(--live-soft);color:var(--live)}
+.pill.note{background:var(--warn-soft);color:var(--warn)}
+.pill.plain{background:var(--accent-soft);color:var(--accent)}
+.pitch{font-size:17px;margin-bottom:14px}
+.case ul{margin:0 0 16px;padding-left:20px;display:grid;gap:7px;font-size:15.5px}
+.case li::marker{color:var(--accent)}
+.stack{font-family:var(--f-mono);font-size:12.5px;color:var(--muted);margin-bottom:14px}
+.links{display:flex;flex-wrap:wrap;gap:8px 18px;font-weight:600;font-size:15px}
+.links span{color:var(--muted);font-weight:400}
+figure{margin:0;min-width:0}
+.frame{border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--surface);box-shadow:0 10px 30px -18px rgba(20,24,40,.35)}
+.frame .bar{display:flex;gap:6px;padding:9px 12px;border-bottom:1px solid var(--line)}
+.frame .bar i{width:9px;height:9px;border-radius:50%;background:var(--line)}
+figcaption{font-size:13px;color:var(--muted);margin-top:10px}
+
+/* pipeline diagram */
+.flow{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin:4px 0 18px;font-size:13px}
+.flow .step{border:1px solid var(--line);background:var(--surface);border-radius:8px;padding:6px 10px;line-height:1.3}
+.flow .step b{display:block;font-size:13px}
+.flow .step small{color:var(--muted);font-size:11.5px}
+.flow .arr{color:var(--muted);font-family:var(--f-mono)}
+
+/* experience */
+.job{display:grid;grid-template-columns:200px minmax(0,1fr);gap:24px;padding-block:22px}
+.job + .job{border-top:1px dashed var(--line)}
+@media (max-width:700px){.job{grid-template-columns:1fr;gap:8px}}
+.job .when{font-family:var(--f-mono);font-size:13px;color:var(--muted)}
+.job h3{font-size:20px;font-weight:700}
+.job .title{color:var(--muted);margin-bottom:12px}
+.job h4{font-size:15px;margin:14px 0 6px;font-family:var(--f-body);font-weight:600}
+.job ul{margin:0;padding-left:20px;display:grid;gap:6px;font-size:15px}
+.num{font-variant-numeric:tabular-nums;font-weight:600}
+
+/* skills */
+.skills{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:22px}
+.skills h3{font-size:15px;font-family:var(--f-body);font-weight:600;margin-bottom:10px}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chips span{font-size:13.5px;padding:4px 10px;border-radius:6px;border:1px solid var(--line);background:var(--surface)}
+
+/* contact */
+.contact{display:grid;gap:14px}
+.contact > *{max-width:640px}
+.contact h2{font-size:clamp(26px,3.4vw,34px);font-weight:800}
+.contact p{color:var(--muted)}
+.copy{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.copy code{font-family:var(--f-mono);font-size:15px;background:var(--surface);border:1px solid var(--line);padding:8px 12px;border-radius:8px;user-select:all;overflow-wrap:anywhere}
+button.btn{cursor:pointer;font:inherit;font-weight:600;font-size:15px}
+footer{padding-block:28px 40px;color:var(--muted);font-size:13.5px;border-top:1px solid var(--line)}
+</style>
+</head>
+<body>
+
+<nav aria-label="Main">
+  <div class="wrap">
+    <a class="me" href="#top">Shubham Pandey</a>
+    <ul>
+      <li><a href="#work">Projects</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li class="opt"><a href="#skills">Skills</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main id="top">
+<header class="wrap hero">
+  <div class="role">Generative AI Engineer · India</div>
+  <h1>I build LLM systems that check their own work.</h1>
+  <p class="lede">Retrieval, document extraction, evaluation and guardrails, on a solid <strong>Python and data-engineering</strong> base. Today I work on GenAI platforms at Impetus Technologies; before that, ETL and data pipelines at TCS.</p>
+  <div class="cta">
+    <a class="btn primary" href="resume.pdf">Resume (PDF)</a>
+    <a class="btn" href="https://github.com/AmShubh45" rel="noopener">GitHub</a>
+    <a class="btn" href="https://www.linkedin.com/in/shubham-pandey-34b499195/" rel="noopener">LinkedIn</a>
+    <a class="btn" href="#contact">Email</a>
+  </div>
+  <div class="facts">
+    <span><b>2.5+ years</b> in industry</span>
+    <span><b>35s → 2s</b> repeat-query latency with LLM response caching</span>
+    <span><b>60% → 85%+</b> document-extraction accuracy</span>
+  </div>
+</header>
+
+<section id="work">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>Projects</h2>
+      <p>Things I designed and built myself. Screenshots are real, taken from the running apps.</p>
+    </div>
+
+    <!-- Samajh -->
+    <article class="case">
+      <div>
+        <div class="tag-row"><span class="pill live">Live</span><span class="pill plain">Launching to UP exam aspirants, Nov 2026</span></div>
+        <h3>Samajh: AI diagnostic testing &amp; exam prep</h3>
+        <p class="pitch">Marks show how much went wrong. Samajh shows <em>why</em>. Every wrong option is tied to a specific misconception, so one short test tells a teacher what each student misunderstood and how to re-teach it.</p>
+        <div class="flow" aria-label="How a question gets published">
+          <div class="step"><b>Draft</b><small>Gemini, JSON schema</small></div><span class="arr">→</span>
+          <div class="step"><b>Blind solve</b><small>second model</small></div><span class="arr">→</span>
+          <div class="step"><b>Key check</b><small>mismatch flagged</small></div><span class="arr">→</span>
+          <div class="step"><b>Teacher approves</b><small>then students see it</small></div>
+        </div>
+        <ul>
+          <li>Bilingual (Hindi and English) diagnostic tests, class reports and printable re-teach plans for schools, plus free full-length <strong>UP Super TET</strong> and <strong>UPPSC PCS</strong> mocks with negative marking, ranks and solutions.</li>
+          <li><strong>500+ questions</strong> across 51 chapter and exam banks. A hand spot-check of 65 AI-verified questions found <strong>2 errors</strong>, and a "report error" queue catches the rest.</li>
+          <li>LLM rubric grading for free-text "explain why" answers. If the model fails or is unsure, the answer goes to the teacher. It never invents a grade.</li>
+          <li>Model fallback chain for free-tier quota limits, CSP / CSRF / rate-limit protection, Postgres in production, 41 automated tests.</li>
+        </ul>
+        <div class="stack">Python · FastAPI · PostgreSQL (Neon) · Gemini · Render</div>
+        <div class="links">
+          <a href="https://samajh-xap4.onrender.com/" rel="noopener">Open the live app →</a>
+          <a href="https://samajh-xap4.onrender.com/exams" rel="noopener">Exam mocks</a>
+          <a href="https://samajh-xap4.onrender.com/demo" rel="noopener">Demo school</a>
+          <span>Code is private; happy to walk through it.</span>
+        </div>
+      </div>
+      <figure class="shot">
+        <div class="frame"><div class="bar"><i></i><i></i><i></i></div>
+          <picture><source srcset="assets/samajh-report.webp" type="image/webp"><img src="assets/samajh-report.jpg" width="1280" height="800" loading="lazy" alt="Samajh class diagnostic report: 18 students, 71% average, 12 misconceptions, ranked by how many students hold each one, with a teaching tip for each."></picture>
+        </div>
+        <figcaption>Class report from the demo school (sample data, fictional students). Misconceptions are ranked by how many students hold them, each with a teaching move.</figcaption>
+      </figure>
+    </article>
+
+    <!-- Cricket -->
+    <article class="case flip">
+      <div>
+        <div class="tag-row"><span class="pill plain">Real-time</span><span class="pill plain">Hindi</span></div>
+        <h3>Live AI Hindi cricket commentary</h3>
+        <p class="pitch">Turns ball-by-ball match data into spoken Hindi commentary with four AI personas, a broadcast overlay and crowd sound, for live streams.</p>
+        <ul>
+          <li>Pipeline: feed → match-state engine → LLM writer → fact checker → text-to-speech → a "director" that times lines, cuts filler when a ball lands and handles breaks.</li>
+          <li><strong>Guardrails:</strong> JSON-schema outputs, a <strong>3.5 s</strong> timeout budget, and a fact checker that blocks any line contradicting the score or the ball's result. Templates take over when the LLM is slow or wrong, so commentary keeps going.</li>
+          <li>Multi-provider TTS (Google Chirp 3 HD, Sarvam, Edge) with retries and caching. Several matches run concurrently over WebSockets. A manual-scoring mode works when no data feed exists.</li>
+          <li>Every match is recorded and can be replayed offline to tune lines. Regression tests capture bugs found during a live final.</li>
+        </ul>
+        <div class="stack">Python · FastAPI · WebSockets · Gemini · TTS · Web Audio · Docker</div>
+        <div class="links">
+          <a href="https://github.com/AmShubh45/Cricket_commentary" rel="noopener">Code on GitHub →</a>
+        </div>
+      </div>
+      <figure class="shot">
+        <div class="frame"><div class="bar"><i></i><i></i><i></i></div>
+          <picture><source srcset="assets/cricket-broadcast.webp" type="image/webp"><img src="assets/cricket-broadcast.jpg" width="1280" height="720" loading="lazy" alt="Broadcast overlay: wagon wheel, win probability, batter on strike, the AI commentator Josh Bhai and the scoreboard."></picture>
+        </div>
+        <figcaption>The broadcast overlay during a scripted demo replay.</figcaption>
+      </figure>
+    </article>
+
+    <!-- Parth -->
+    <article class="case solo">
+      <div>
+        <div class="tag-row"><span class="pill live">Live</span><span class="pill plain">Open source</span></div>
+        <h3>Parth: Bhagavad Gita voice assistant</h3>
+        <p class="pitch">Talk to it and get guidance grounded in the Gita's verses, spoken back in Hindi.</p>
+        <ul>
+          <li>RAG with Gemini embeddings: a curated set of verses is embedded once, each question is matched by cosine similarity, with a keyword fallback when embeddings are unavailable.</li>
+          <li>Real-time voice over WebSockets with the Gemini Live API, per-user sessions and conversation history, deployed with Docker.</li>
+        </ul>
+        <div class="stack">Node.js · Express · WebSockets · Gemini (Live API, embeddings) · Docker</div>
+        <div class="links">
+          <a href="https://parth-gita-assistant.onrender.com/" rel="noopener">Try it →</a>
+          <a href="https://github.com/AmShubh45/parth-gita-assistant" rel="noopener">Code on GitHub</a>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="wrap">
+    <div class="sec-head"><h2>Experience</h2></div>
+
+    <div class="job">
+      <div class="when">Oct 2025 – present<br>Remote, India</div>
+      <div>
+        <h3>Impetus Technologies</h3>
+        <div class="title">Generative AI Engineer</div>
+        <h4>Sales intelligence platform (RAG, in production)</h4>
+        <ul>
+          <li>Production RAG pipeline on AWS Bedrock: deal intelligence, win-probability analysis and objection handling for <span class="num">200+</span> sales users.</li>
+          <li>Deal-aware LLM response caching in PostgreSQL: repeat-query latency from <span class="num">35 s to 2 s</span>, <span class="num">3–5</span> fewer LLM calls per user. Redis per-user rate limiting to cap cost.</li>
+          <li>Daily AI nudges with prioritised insights and next actions across <span class="num">5,000+</span> deals.</li>
+        </ul>
+        <h4>Finance document intelligence (pilot)</h4>
+        <ul>
+          <li>LLM extraction on Qwen VLM for 5+ formats (PDF, images, Excel, PPTX), Qdrant search, Langfuse tracing.</li>
+          <li>Automated accuracy evaluation that compares each source PDF with its extraction and flags gaps. With QA feedback loops, accuracy went from <span class="num">60% to 85%+</span> on a 90+ document set.</li>
+        </ul>
+        <h4>Context engineering PoCs</h4>
+        <ul>
+          <li>Semantic definitions, metrics and a Turtle (RDF) ontology for Databricks Genie natural-language analytics; most of an end-to-end AWS Context Ontology Accelerator PoC.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="job">
+      <div class="when">Jan 2024 – Oct 2025<br>Pune, India</div>
+      <div>
+        <h3>Tata Consultancy Services</h3>
+        <div class="title">Python Developer · ETL &amp; Data Engineering</div>
+        <ul>
+          <li>RAG-based production support assistant over the team knowledge base.</li>
+          <li>Business-critical ETL pipelines <span class="num">50%</span> faster through Python and SQL optimisation.</li>
+          <li>PostgreSQL query and index tuning: average response times down <span class="num">60%+</span>.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="job">
+      <div class="when">2019 – 2023</div>
+      <div>
+        <h3>United College of Engineering &amp; Research, Prayagraj</h3>
+        <div class="title">B.Tech, Computer Science · TCS CodeVita Season 10: global rank 3,370, college rank 3rd</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap">
+    <div class="sec-head"><h2>Skills</h2></div>
+    <div class="skills">
+      <div><h3>LLM &amp; GenAI</h3><div class="chips"><span>RAG</span><span>Context engineering</span><span>LLM evaluation</span><span>LLM-as-judge</span><span>Guardrails</span><span>Structured outputs</span><span>Prompt engineering</span><span>Vision-language models</span><span>Text-to-speech</span></div></div>
+      <div><h3>Models &amp; platforms</h3><div class="chips"><span>AWS Bedrock</span><span>Google Gemini</span><span>Qwen VLM</span><span>Databricks Genie</span><span>Langfuse</span><span>Qdrant</span><span>FAISS</span><span>LangChain</span></div></div>
+      <div><h3>Backend</h3><div class="chips"><span>Python</span><span>SQL</span><span>FastAPI</span><span>Django REST</span><span>WebSockets</span><span>Celery</span><span>PySpark</span></div></div>
+      <div><h3>Data &amp; infra</h3><div class="chips"><span>PostgreSQL</span><span>Redis</span><span>Docker</span><span>Kubernetes</span><span>Airflow</span><span>AWS (S3, RDS, Redshift, Lambda, Glue, Athena)</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap contact">
+    <h2>Get in touch</h2>
+    <p>Open to Generative AI / AI engineering roles. The fastest way to reach me is email.</p>
+    <div class="copy">
+      <code id="email">shubhampandey45.sp@gmail.com</code>
+      <button class="btn" id="copy-btn" type="button">Copy</button>
+      <a class="btn" href="mailto:shubhampandey45.sp@gmail.com">Write an email</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">© 2026 Shubham Pandey · Hand-written HTML, hosted on GitHub Pages.</div>
+</footer>
+
+<script>
+document.getElementById("copy-btn").addEventListener("click", async (e) => {
+  const btn = e.currentTarget, text = document.getElementById("email").textContent;
+  try { await navigator.clipboard.writeText(text); btn.textContent = "Copied"; }
+  catch (err) {
+    const r = document.createRange(); r.selectNodeContents(document.getElementById("email"));
+    const s = getSelection(); s.removeAllRanges(); s.addRange(r); btn.textContent = "Selected";
+  }
+  setTimeout(() => { btn.textContent = "Copy"; }, 1800);
+});
+</script>
+</body>
+</html>
