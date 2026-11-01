@@ -4,339 +4,682 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Shubham Pandey · Generative AI Engineer</title>
-<meta name="description" content="Shubham Pandey, Generative AI Engineer. LLM systems with retrieval, document extraction, evaluation and guardrails. Projects: Samajh, live Hindi cricket commentary, Parth.">
+<meta name="description" content="Shubham Pandey, Generative AI Engineer. I build LLM systems that check their own work: retrieval, document extraction, evaluation and guardrails. Try Samajh and the Hindi cricket commentary engine right on the page.">
 <meta property="og:title" content="Shubham Pandey · Generative AI Engineer">
-<meta property="og:description" content="LLM systems that check their own work: retrieval, document extraction, evaluation and guardrails.">
+<meta property="og:description" content="LLM systems that check their own work. Try the projects right on the page.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://amshubh45.github.io/">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%232F3BD9'/%3E%3Ctext x='32' y='43' font-family='Arial,sans-serif' font-size='30' font-weight='700' fill='white' text-anchor='middle'%3ESP%3C/text%3E%3C/svg%3E">
+<meta property="og:image" content="https://amshubh45.github.io/assets/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0B1022">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230B1022'/%3E%3Cpath d='M17 34l9 9 21-22' fill='none' stroke='%23F59E0B' stroke-width='7' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800&family=Public+Sans:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Hanken+Grotesk:ital,wght@0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+Devanagari:wght@400;500;700&family=Tiro+Devanagari+Hindi&display=swap">
 <style>
-/* Layout: a single reading column (max 1040px) with a sticky slim nav; project cases alternate text and screenshot on wide screens and stack on phones. */
+/* Concept: the page proves the work. A dark "fact-check console" hero, then two hands-on demos (Samajh diagnosis, cricket commentary) before any résumé-style content. Single column, max 1080px. */
 :root{
-  --bg:#F6F7FA; --surface:#FFFFFF; --fg:#151823; --muted:#5B6275; --line:#DFE3EC;
-  --accent:#2F3BD9; --accent-soft:#E8EAFC; --live:#137A4B; --live-soft:#E0F2E9; --warn:#8A5A00; --warn-soft:#FBF0D9;
-  --f-display:"Archivo", "Segoe UI", system-ui, sans-serif;
-  --f-body:"Public Sans", "Segoe UI", system-ui, sans-serif;
+  --paper:#F3F4F8; --surface:#FFFFFF; --ink:#0D1224; --muted:#596079; --line:#DCE0EA; --soft:#EEF0F6;
+  --amber:#F59E0B; --amber-ink:#9A5B00; --amber-soft:#FFF4DE;
+  --ok:#0F8A55; --ok-soft:#E1F4EA; --bad:#D23B3B; --bad-soft:#FCE8E8;
+  --night:#0B1022; --night-2:#121933; --night-line:#252E52; --night-fg:#E8EBF7; --night-muted:#98A0C0;
+  --f-display:"Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  --f-body:"Hanken Grotesk", "Noto Sans Devanagari", "Segoe UI", system-ui, sans-serif;
   --f-mono:"JetBrains Mono", ui-monospace, Menlo, Consolas, monospace;
+  --f-hi:"Noto Sans Devanagari", "Hanken Grotesk", sans-serif;
+  --f-hi-display:"Tiro Devanagari Hindi", "Noto Sans Devanagari", serif;
   color-scheme:light;
 }
 @media (prefers-color-scheme: dark){
   :root{
-    --bg:#0F1117; --surface:#171A23; --fg:#E8EAF1; --muted:#9AA1B4; --line:#2A2F3D;
-    --accent:#8C95FF; --accent-soft:#1F2340; --live:#55C98F; --live-soft:#13291E; --warn:#E9B957; --warn-soft:#2D240F;
+    --paper:#0A0E1B; --surface:#121829; --ink:#E9ECF6; --muted:#9AA2BE; --line:#262E48; --soft:#171E33;
+    --amber:#F7B23B; --amber-ink:#F7C46B; --amber-soft:#2B2210;
+    --ok:#4CCB8F; --ok-soft:#10291D; --bad:#F07272; --bad-soft:#331616;
     color-scheme:dark;
   }
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
-@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
-body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.6 var(--f-body);-webkit-font-smoothing:antialiased}
-a{color:var(--accent);text-underline-offset:3px}
-a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
+body{margin:0;background:var(--paper);color:var(--ink);font:16.5px/1.6 var(--f-body);-webkit-font-smoothing:antialiased}
 img{max-width:100%;height:auto;display:block}
-.wrap{max-width:1040px;margin:0 auto;padding-inline:20px}
-h1,h2,h3{font-family:var(--f-display);margin:0;text-wrap:balance;letter-spacing:-.015em}
+a{color:inherit;text-decoration-color:var(--amber);text-decoration-thickness:2px;text-underline-offset:3px}
+a:hover{text-decoration-color:currentColor}
+:focus-visible{outline:2px solid var(--amber);outline-offset:3px;border-radius:4px}
+h1,h2,h3{font-family:var(--f-display);margin:0;letter-spacing:-.02em;text-wrap:balance}
 p{margin:0}
+.wrap{max-width:1080px;margin:0 auto;padding-inline:20px}
+.mono{font-family:var(--f-mono)}
+.hi{font-family:var(--f-hi)}
+button{font:inherit;cursor:pointer}
 
-/* nav */
-nav{position:sticky;top:0;z-index:5;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
-nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;height:56px}
-nav .me{font-family:var(--f-display);font-weight:800;font-size:17px;color:var(--fg);text-decoration:none;white-space:nowrap}
-nav ul{display:flex;gap:20px;list-style:none;margin:0;padding:0;font-size:14.5px}
-nav ul a{color:var(--muted);text-decoration:none}
-nav ul a:hover{color:var(--fg)}
-@media (max-width:560px){nav ul{gap:12px;font-size:13.5px} nav ul li.opt{display:none}}
-@media (max-width:380px){nav .me{font-size:15px}}
+/* ───── nav ───── */
+nav{position:sticky;top:0;z-index:10;background:color-mix(in srgb,var(--night) 92%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--night-line);color:var(--night-fg)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:54px;gap:14px}
+.brand{font-family:var(--f-display);font-weight:800;font-size:16px;text-decoration:none;white-space:nowrap;display:flex;align-items:center;gap:9px}
+.brand i{width:9px;height:9px;border-radius:50%;background:var(--ok);box-shadow:0 0 0 4px color-mix(in srgb,var(--ok) 25%,transparent)}
+nav ul{display:flex;align-items:center;gap:22px;list-style:none;margin:0;padding:0;font-size:14px}
+nav ul a{color:var(--night-muted);text-decoration:none}
+nav ul a:hover{color:var(--night-fg)}
+.nav-cta{background:var(--amber);color:#1A1200 !important;padding:6px 12px;border-radius:7px;font-weight:700}
+@media (max-width:640px){nav ul{gap:12px;font-size:13px} nav ul .nav-opt{display:none}}
+@media (max-width:440px){nav ul .opt2{display:none} .brand{font-size:15px}}
 
-/* hero */
-.hero{padding-block:72px 48px;display:grid;gap:22px}
-.role{font-family:var(--f-mono);font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--accent)}
-.hero h1{font-size:clamp(38px,6.4vw,64px);font-weight:800;line-height:1.02}
-.lede{font-size:clamp(18px,2.2vw,21px);color:var(--muted);max-width:60ch}
-.lede strong{color:var(--fg);font-weight:600}
-.cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:6px}
-.btn{display:inline-flex;align-items:center;gap:8px;padding:10px 16px;border-radius:8px;border:1px solid var(--line);background:var(--surface);color:var(--fg);font-weight:600;font-size:15px;text-decoration:none}
-.btn:hover{border-color:var(--accent)}
-.btn.primary{background:var(--accent);border-color:var(--accent);color:#fff}
-@media (prefers-color-scheme: dark){.btn.primary{color:#0F1117}}
-.facts{display:flex;flex-wrap:wrap;gap:8px 22px;font-size:14px;color:var(--muted);margin-top:4px}
-.facts b{color:var(--fg);font-weight:600}
+/* ───── hero ───── */
+.hero{background:var(--night);color:var(--night-fg);position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;background-image:linear-gradient(var(--night-line) 1px,transparent 1px),linear-gradient(90deg,var(--night-line) 1px,transparent 1px);background-size:44px 44px;opacity:.35;mask-image:radial-gradient(ellipse 80% 70% at 70% 30%,#000 20%,transparent 75%);pointer-events:none}
+.hero .wrap{position:relative;display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:48px;align-items:center;padding-block:64px 72px}
+.hero .wrap > *{min-width:0}
+@media (max-width:900px){.hero .wrap{grid-template-columns:1fr;gap:36px;padding-block:44px 52px}}
+.kicker{font-family:var(--f-mono);font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--amber);margin-top:18px}
+.status{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:600;color:#7EE2AE;background:rgba(76,203,143,.1);border:1px solid rgba(76,203,143,.28);padding:4px 11px;border-radius:99px}
+.status i{width:7px;height:7px;border-radius:50%;background:#4CCB8F;box-shadow:0 0 0 3px rgba(76,203,143,.25)}
+.hero h1{font-size:clamp(40px,6vw,66px);font-weight:800;line-height:1.02;margin-top:12px}
+.hero h1 em{font-style:normal;color:var(--amber)}
+.name-line{display:flex;align-items:baseline;gap:12px;margin-top:22px;flex-wrap:wrap}
+.name-line b{font-family:var(--f-display);font-size:22px;font-weight:800}
+.name-line .dev{font-family:var(--f-hi-display);font-size:22px;color:var(--night-muted)}
+.lede{color:var(--night-muted);font-size:18px;max-width:52ch;margin-top:10px}
+.lede strong{color:var(--night-fg);font-weight:600}
+.cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:11px 16px;border-radius:9px;font-weight:700;font-size:15px;text-decoration:none;border:1px solid var(--night-line);color:var(--night-fg);background:var(--night-2)}
+.btn:hover{border-color:var(--amber)}
+.btn.primary{background:var(--amber);border-color:var(--amber);color:#1A1200}
+.btn svg{width:16px;height:16px}
+.social{display:flex;gap:20px;margin-top:18px;font-size:14.5px;font-weight:600}
+.social a{color:var(--night-muted)}
+.social a:hover{color:var(--night-fg)}
 
-/* sections */
-section{padding-block:56px;border-top:1px solid var(--line)}
-.sec-head{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:8px 20px;margin-bottom:32px}
-.sec-head h2{font-size:clamp(26px,3.4vw,34px);font-weight:800}
-.sec-head p{color:var(--muted);max-width:56ch;font-size:15px}
+/* console */
+.console{background:#070B19;border:1px solid var(--night-line);border-radius:14px;box-shadow:0 30px 80px -30px rgba(0,0,0,.7),0 0 0 1px rgba(255,255,255,.02) inset;font-family:var(--f-mono);font-size:13.2px;min-width:0}
+.console-bar{display:flex;align-items:center;gap:8px;padding:10px 14px;border-bottom:1px solid var(--night-line);color:var(--night-muted);font-size:12px}
+.console-bar i{width:10px;height:10px;border-radius:50%;background:var(--night-line)}
+.console-bar .title{margin-left:6px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.console-bar button{margin-left:auto;background:none;border:1px solid var(--night-line);color:var(--night-muted);border-radius:6px;padding:2px 9px;font-family:var(--f-mono);font-size:11.5px}
+.console-bar button:hover{color:var(--night-fg);border-color:var(--night-muted)}
+.claims{list-style:none;margin:0;padding:12px 14px 6px}
+.claim{display:grid;grid-template-columns:22px 1fr;gap:8px;padding:8px 0;border-bottom:1px dashed var(--night-line);line-height:1.5}
+.claim:last-child{border-bottom:0}
+.claim .mark{font-weight:700;text-align:center}
+.claim .text{color:var(--night-fg);min-width:0}
+.claim .src{display:block;font-size:11.5px;margin-top:2px;color:var(--night-muted)}
+.claim.ok .mark{color:#4CCB8F}
+.claim.ok .src b{color:#4CCB8F;font-weight:500}
+.claim.bad .mark{color:#F07272}
+.claim.bad .orig{text-decoration:line-through;text-decoration-color:#F07272;text-decoration-thickness:2px;color:var(--night-muted)}
+.claim.bad .src b{color:#F07272;font-weight:500}
+.claim .fix{display:block;color:var(--night-fg);margin-top:4px}
+.claim .fix::before{content:"→ ";color:var(--amber)}
+.claim.pending .mark{color:var(--night-muted)}
+.claim.pending .text{color:var(--night-muted)}
+.claim.checking .mark{color:var(--amber);animation:blink .7s steps(2) infinite}
+@keyframes blink{50%{opacity:.2}}
+.claim .src,.claim .fix{transition:opacity .25s}
+.claim.pending .src,.claim.pending .fix,.claim.checking .src,.claim.checking .fix{opacity:0}
+.tally{display:flex;flex-wrap:wrap;gap:6px 16px;padding:10px 14px 12px;border-top:1px solid var(--night-line);font-size:12px;color:var(--night-muted)}
+.tally b{color:var(--night-fg);font-weight:500}
+.tally .zero b{color:#4CCB8F}
+.console-note{font-family:var(--f-body);font-size:13px;color:var(--night-muted);margin-top:12px}
 
-/* project case */
-.case{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:36px;align-items:start;padding-block:28px}
-.case + .case{border-top:1px dashed var(--line)}
-.case.flip .shot{order:-1}
-.case.solo{grid-template-columns:minmax(0,1fr);max-width:720px}
-@media (max-width:860px){.case{grid-template-columns:1fr;gap:22px}.case.flip .shot{order:0}}
-.case h3{font-size:clamp(22px,2.6vw,28px);font-weight:800;margin-bottom:6px}
-.tag-row{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px}
-.pill{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.04em;padding:3px 9px;border-radius:99px;font-weight:500;white-space:nowrap}
-.pill.live{background:var(--live-soft);color:var(--live)}
-.pill.note{background:var(--warn-soft);color:var(--warn)}
-.pill.plain{background:var(--accent-soft);color:var(--accent)}
-.pitch{font-size:17px;margin-bottom:14px}
-.case ul{margin:0 0 16px;padding-left:20px;display:grid;gap:7px;font-size:15.5px}
-.case li::marker{color:var(--accent)}
-.stack{font-family:var(--f-mono);font-size:12.5px;color:var(--muted);margin-bottom:14px}
-.links{display:flex;flex-wrap:wrap;gap:8px 18px;font-weight:600;font-size:15px}
-.links span{color:var(--muted);font-weight:400}
-figure{margin:0;min-width:0}
-.frame{border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--surface);box-shadow:0 10px 30px -18px rgba(20,24,40,.35)}
-.frame .bar{display:flex;gap:6px;padding:9px 12px;border-bottom:1px solid var(--line)}
-.frame .bar i{width:9px;height:9px;border-radius:50%;background:var(--line)}
-figcaption{font-size:13px;color:var(--muted);margin-top:10px}
+/* ───── sections ───── */
+section{padding-block:80px}
+section + section{border-top:1px solid var(--line)}
+.eyebrow{font-family:var(--f-mono);font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--amber-ink)}
+.sec-title{font-size:clamp(30px,4.2vw,46px);font-weight:800;line-height:1.05;margin-top:10px;max-width:22ch}
+.sec-intro{color:var(--muted);font-size:17.5px;max-width:62ch;margin-top:14px}
+.grid-2{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:40px;align-items:start;margin-top:40px}
+@media (max-width:900px){.grid-2{grid-template-columns:1fr;gap:28px}}
+.pills{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.pill{font-family:var(--f-mono);font-size:11.5px;padding:3px 10px;border-radius:99px;border:1px solid var(--line);color:var(--muted);background:var(--surface);white-space:nowrap}
+.pill.live{border-color:transparent;background:var(--ok-soft);color:var(--ok)}
+.pill.live::before{content:"● ";}
 
-/* pipeline diagram */
-.flow{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin:4px 0 18px;font-size:13px}
-.flow .step{border:1px solid var(--line);background:var(--surface);border-radius:8px;padding:6px 10px;line-height:1.3}
-.flow .step b{display:block;font-size:13px}
-.flow .step small{color:var(--muted);font-size:11.5px}
-.flow .arr{color:var(--muted);font-family:var(--f-mono)}
+/* demo card shared */
+.demo{background:var(--surface);border:1px solid var(--line);border-radius:16px;box-shadow:0 24px 60px -36px rgba(13,18,36,.35);overflow:hidden;min-width:0}
+.demo-head{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:12px 16px;border-bottom:1px solid var(--line);background:var(--soft)}
+.demo-head .label{font-family:var(--f-mono);font-size:12px;color:var(--muted)}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--surface)}
+.seg button{border:0;background:none;padding:4px 11px;font-size:13px;color:var(--muted)}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+.demo-body{padding:20px}
+
+/* samajh quiz */
+.q-context{font-size:14.5px;color:var(--muted);margin-bottom:6px}
+.q-text{font-size:19px;font-weight:600;line-height:1.4}
+.opts{display:grid;gap:9px;margin-top:16px}
+.opt{display:flex;align-items:center;gap:12px;width:100%;text-align:left;border:1.5px solid var(--line);background:var(--surface);color:var(--ink);border-radius:10px;padding:11px 14px;font-size:16px;transition:border-color .15s,background .15s}
+.opt:hover{border-color:var(--muted)}
+.opt .k{font-family:var(--f-mono);font-size:12.5px;width:24px;height:24px;border-radius:6px;display:grid;place-items:center;background:var(--soft);color:var(--muted);flex:none}
+.opt.picked.right{border-color:var(--ok);background:var(--ok-soft)}
+.opt.picked.wrong{border-color:var(--bad);background:var(--bad-soft)}
+.opt.reveal{border-color:var(--ok);border-style:dashed}
+.diag{margin-top:16px;border-radius:12px;padding:16px;background:var(--soft);border:1px solid var(--line);min-height:120px}
+.diag .hint{color:var(--muted);font-size:14.5px}
+.diag .tag{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.05em;text-transform:uppercase}
+.diag.wrong .tag{color:var(--bad)} .diag.right .tag{color:var(--ok)} .diag.neutral .tag{color:var(--amber-ink)}
+.diag h4{font-family:var(--f-display);font-size:19px;margin:4px 0 10px;line-height:1.25}
+.diag dl{margin:0;display:grid;gap:10px}
+.diag dt{font-family:var(--f-mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.diag dd{margin:2px 0 0;font-size:15px}
+.q-foot{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:14px;font-size:13.5px;color:var(--muted);flex-wrap:wrap}
+.linkbtn{background:none;border:0;color:var(--ink);font-weight:600;text-decoration:underline;text-decoration-color:var(--amber);text-decoration-thickness:2px;text-underline-offset:3px;padding:0}
+
+/* pipeline */
+.pipe{display:grid;gap:0;margin-top:22px;counter-reset:s}
+.pipe li{list-style:none;display:grid;grid-template-columns:34px 1fr;gap:12px;position:relative;padding-bottom:16px}
+.pipe li:not(:last-child)::after{content:"";position:absolute;left:16px;top:32px;bottom:2px;width:2px;background:var(--line)}
+.pipe .n{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;font-family:var(--f-mono);font-size:13px;background:var(--surface);border:1.5px solid var(--line)}
+.pipe li.gate .n{border-color:var(--amber);color:var(--amber-ink);background:var(--amber-soft)}
+.pipe b{display:block;font-size:16px}
+.pipe span{color:var(--muted);font-size:14.5px}
+.pipe ol,.pipe{padding:0;margin-bottom:0}
+.facts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:22px}
+.fact{border:1px solid var(--line);border-radius:12px;padding:12px 14px;background:var(--surface)}
+.fact b{display:block;font-family:var(--f-display);font-size:26px;font-weight:800;font-variant-numeric:tabular-nums;line-height:1.1}
+.fact span{font-size:13px;color:var(--muted)}
+@media (max-width:480px){.facts{grid-template-columns:1fr 1fr}}
+.more{margin-top:20px;display:grid;gap:8px;padding-left:20px;font-size:15.5px}
+.more li::marker{color:var(--amber)}
+.links{display:flex;flex-wrap:wrap;gap:10px 20px;margin-top:22px;font-weight:700}
+.links .note{font-weight:400;color:var(--muted)}
+.shot{margin:28px 0 0}
+.shot .frame{border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--surface)}
+.shot figcaption{font-size:13px;color:var(--muted);margin-top:8px}
+
+/* cricket */
+.board{background:linear-gradient(160deg,#0E1940,#0A1230);color:#EEF1FF;border-radius:16px;overflow:hidden;border:1px solid #1E2A5A;box-shadow:0 24px 60px -30px rgba(10,18,48,.8);min-width:0}
+.board-top{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:12px 16px;border-bottom:1px solid #1E2A5A;font-family:var(--f-mono);font-size:12px;color:#9FB0E8}
+.board-top .live{color:#FF6B6B;font-weight:500}
+.board-top .live::before{content:"● "}
+.score{display:grid;grid-template-columns:auto 1fr auto;gap:16px;align-items:center;padding:18px 16px 14px}
+.score .team{font-family:var(--f-display);font-weight:800;font-size:15px;background:#F59E0B;color:#1A1200;padding:6px 10px;border-radius:8px}
+.score .runs{font-family:var(--f-display);font-weight:800;font-size:40px;line-height:1;font-variant-numeric:tabular-nums}
+.score .runs small{font-size:17px;color:#F7C46B;margin-left:8px}
+.score .need{text-align:right;font-family:var(--f-mono);font-size:12.5px;color:#9FB0E8;line-height:1.5}
+.score .need b{color:#FFD27A;font-weight:500;display:block;font-size:14px}
+.ballrow{display:flex;align-items:center;gap:12px;padding:0 16px 14px}
+.chip{min-width:46px;height:46px;border-radius:50%;display:grid;place-items:center;font-family:var(--f-display);font-weight:800;font-size:17px;background:#1C2756;color:#fff;flex:none}
+.chip.W{background:#E5484D}.chip.r6{background:#7C3AED}.chip.r4{background:#2563EB}.chip.NB{background:#B7791F;font-size:14px}
+.ballrow .over{font-family:var(--f-mono);font-size:12.5px;color:#9FB0E8}
+.ballrow .call{font-family:var(--f-hi);font-weight:700;font-size:20px;line-height:1.3}
+.commentary{margin:0 16px;padding:14px 16px;border-radius:12px;background:rgba(255,255,255,.05);border:1px solid #1E2A5A}
+.commentary .who{display:flex;align-items:center;gap:8px;font-family:var(--f-mono);font-size:11.5px;color:#9FB0E8;margin-bottom:8px}
+.commentary .who b{color:#FFD27A;font-weight:500}
+.commentary .line{font-family:var(--f-hi);font-size:17px;line-height:1.65}
+.commentary .gloss{font-size:14px;color:#AEB9E3;margin-top:8px;font-style:italic}
+.board-foot{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:10px;padding:14px 16px 16px}
+.check{font-family:var(--f-mono);font-size:12px;color:#7EE2AE;background:rgba(76,203,143,.12);border:1px solid rgba(76,203,143,.3);padding:4px 10px;border-radius:99px}
+.board-btns{display:flex;gap:8px}
+.board-btns button{border:1px solid #2B3A78;background:#152052;color:#EEF1FF;border-radius:8px;padding:7px 12px;font-size:14px;font-weight:600}
+.board-btns button.primary{background:#F59E0B;border-color:#F59E0B;color:#1A1200}
+.dots{display:flex;gap:6px;padding:0 16px 14px}
+.dots i{width:22px;height:4px;border-radius:2px;background:#22306A}
+.dots i.on{background:#F59E0B}
+.fade{animation:fade .35s ease}
+@keyframes fade{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+
+/* parth */
+.parth{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:24px;align-items:center;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:26px;margin-top:36px}
+@media (max-width:760px){.parth{grid-template-columns:1fr}}
+.parth h3{font-size:24px;font-weight:800}
+.parth p{color:var(--muted);margin-top:8px;max-width:62ch}
+.parth .stack{font-family:var(--f-mono);font-size:12.5px;color:var(--muted);margin-top:12px}
+.parth .om{font-family:var(--f-hi-display);font-size:64px;line-height:1;color:var(--amber);opacity:.9}
 
 /* experience */
-.job{display:grid;grid-template-columns:200px minmax(0,1fr);gap:24px;padding-block:22px}
-.job + .job{border-top:1px dashed var(--line)}
-@media (max-width:700px){.job{grid-template-columns:1fr;gap:8px}}
-.job .when{font-family:var(--f-mono);font-size:13px;color:var(--muted)}
-.job h3{font-size:20px;font-weight:700}
-.job .title{color:var(--muted);margin-bottom:12px}
-.job h4{font-size:15px;margin:14px 0 6px;font-family:var(--f-body);font-weight:600}
-.job ul{margin:0;padding-left:20px;display:grid;gap:6px;font-size:15px}
-.num{font-variant-numeric:tabular-nums;font-weight:600}
+.timeline{margin-top:36px;display:grid;gap:0}
+.job{display:grid;grid-template-columns:190px minmax(0,1fr);gap:28px;padding-block:26px;border-top:1px solid var(--line)}
+.job:first-child{border-top:0;padding-top:0}
+@media (max-width:760px){.job{grid-template-columns:1fr;gap:6px}}
+.job .when{font-family:var(--f-mono);font-size:13px;color:var(--muted);line-height:1.6}
+.job h3{font-size:22px;font-weight:800}
+.job .role{color:var(--muted);margin-top:2px}
+.wins{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-top:16px}
+.win{border:1px solid var(--line);border-radius:12px;padding:14px;background:var(--surface)}
+.win .big{font-family:var(--f-display);font-size:24px;font-weight:800;font-variant-numeric:tabular-nums;line-height:1.15}
+.win .big small{font-size:14px;color:var(--muted);font-weight:600;margin-left:4px}
+.win p{font-size:14.5px;color:var(--muted);margin-top:6px}
+.win .ctx{font-family:var(--f-mono);font-size:11px;letter-spacing:.05em;text-transform:uppercase;color:var(--amber-ink);margin-bottom:6px}
+.job ul{margin:14px 0 0;padding-left:20px;display:grid;gap:6px;font-size:15.5px}
+.job li::marker{color:var(--amber)}
 
 /* skills */
-.skills{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:22px}
-.skills h3{font-size:15px;font-family:var(--f-body);font-weight:600;margin-bottom:10px}
-.chips{display:flex;flex-wrap:wrap;gap:6px}
-.chips span{font-size:13.5px;padding:4px 10px;border-radius:6px;border:1px solid var(--line);background:var(--surface)}
+.skills{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:28px;margin-top:36px}
+.skills h3{font-family:var(--f-mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:500;margin-bottom:12px}
+.chips{display:flex;flex-wrap:wrap;gap:7px}
+.chips span{font-size:14px;padding:5px 11px;border-radius:8px;background:var(--surface);border:1px solid var(--line)}
 
 /* contact */
-.contact{display:grid;gap:14px}
-.contact > *{max-width:640px}
-.contact h2{font-size:clamp(26px,3.4vw,34px);font-weight:800}
-.contact p{color:var(--muted)}
-.copy{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
-.copy code{font-family:var(--f-mono);font-size:15px;background:var(--surface);border:1px solid var(--line);padding:8px 12px;border-radius:8px;user-select:all;overflow-wrap:anywhere}
-button.btn{cursor:pointer;font:inherit;font-weight:600;font-size:15px}
-footer{padding-block:28px 40px;color:var(--muted);font-size:13.5px;border-top:1px solid var(--line)}
+.contact{background:var(--night);color:var(--night-fg)}
+section.contact{border-top:0}
+.contact .sec-title{color:var(--night-fg)}
+.contact .sec-intro{color:var(--night-muted)}
+.copy{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:28px}
+.copy code{font-family:var(--f-mono);font-size:16px;background:var(--night-2);border:1px solid var(--night-line);padding:10px 14px;border-radius:9px;user-select:all;overflow-wrap:anywhere}
+.contact .btn{font-size:15px}
+footer{background:var(--night);color:var(--night-muted);font-size:13px;border-top:1px solid var(--night-line);padding-block:22px}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px}
+
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none !important;transition:none !important}
+}
 </style>
 </head>
 <body>
 
 <nav aria-label="Main">
   <div class="wrap">
-    <a class="me" href="#top">Shubham Pandey</a>
+    <a class="brand" href="#top"><i aria-hidden="true"></i>Shubham Pandey</a>
     <ul>
-      <li><a href="#work">Projects</a></li>
-      <li><a href="#experience">Experience</a></li>
-      <li class="opt"><a href="#skills">Skills</a></li>
-      <li><a href="#contact">Contact</a></li>
+      <li><a href="#samajh">Samajh</a></li>
+      <li class="opt2"><a href="#cricket">Commentary</a></li>
+      <li class="nav-opt"><a href="#experience">Experience</a></li>
+      <li><a class="nav-cta" href="resume.pdf">Resume</a></li>
     </ul>
   </div>
 </nav>
 
 <main id="top">
-<header class="wrap hero">
-  <div class="role">Generative AI Engineer · India</div>
-  <h1>I build LLM systems that check their own work.</h1>
-  <p class="lede">Retrieval, document extraction, evaluation and guardrails, on a solid <strong>Python and data-engineering</strong> base. Today I work on GenAI platforms at Impetus Technologies; before that, ETL and data pipelines at TCS.</p>
-  <div class="cta">
-    <a class="btn primary" href="resume.pdf">Resume (PDF)</a>
-    <a class="btn" href="https://github.com/AmShubh45" rel="noopener">GitHub</a>
-    <a class="btn" href="https://www.linkedin.com/in/shubham-pandey-34b499195/" rel="noopener">LinkedIn</a>
-    <a class="btn" href="#contact">Email</a>
-  </div>
-  <div class="facts">
-    <span><b>2.5+ years</b> in industry</span>
-    <span><b>35s → 2s</b> repeat-query latency with LLM response caching</span>
-    <span><b>60% → 85%+</b> document-extraction accuracy</span>
+<!-- ───────────── HERO ───────────── -->
+<header class="hero">
+  <div class="wrap">
+    <div>
+      <div class="status"><i aria-hidden="true"></i>Open to AI engineering roles</div>
+      <div class="kicker">Generative AI Engineer · India</div>
+      <h1>I build LLM systems that <em>check their own work.</em></h1>
+      <div class="name-line"><b>Shubham Pandey</b><span class="dev" lang="hi">शुभम पांडेय</span></div>
+      <p class="lede">Retrieval, document extraction, evaluation and guardrails, on a solid <strong>Python and data-engineering</strong> base. GenAI platforms at Impetus Technologies today; ETL and data pipelines at TCS before that.</p>
+      <div class="cta">
+        <a class="btn primary" href="resume.pdf">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m0 0l-5-5m5 5l5-5M5 21h14"/></svg>Resume (PDF)</a>
+        <a class="btn" href="#samajh">Try my projects ↓</a>
+      </div>
+      <div class="social"><a href="https://github.com/AmShubh45" rel="noopener">GitHub</a><a href="https://www.linkedin.com/in/shubham-pandey-34b499195/" rel="noopener">LinkedIn</a><a href="#contact">Email</a></div>
+    </div>
+
+    <div>
+      <div class="console" role="region" aria-label="Fact-check of this introduction">
+        <div class="console-bar"><i></i><i></i><i></i><span class="title">fact_check(intro_draft, source="resume.pdf")</span><button type="button" id="replay" hidden>replay</button></div>
+        <ol class="claims" id="claims">
+          <li class="claim ok"><span class="mark" aria-hidden="true">✓</span><span class="text">Generative AI Engineer at Impetus Technologies.<span class="src"><b>verified</b> · experience, Oct 2025 – present</span></span></li>
+          <li class="claim ok"><span class="mark" aria-hidden="true">✓</span><span class="text">Cut repeat-query latency from 35 s to 2 s with LLM response caching.<span class="src"><b>verified</b> · sales intelligence platform</span></span></li>
+          <li class="claim bad"><span class="mark" aria-hidden="true">✗</span><span class="text"><span class="orig">Has 10+ years of experience building AI systems.</span><span class="src"><b>rejected</b> · contradicts source: 2.5+ years</span><span class="fix">2.5+ years in industry, building with LLMs every day.</span></span></li>
+          <li class="claim ok"><span class="mark" aria-hidden="true">✓</span><span class="text">Raised document-extraction accuracy from 60% to 85%+.<span class="src"><b>verified</b> · finance document pilot</span></span></li>
+          <li class="claim ok"><span class="mark" aria-hidden="true">✓</span><span class="text">Built Samajh: tests that show <i>why</i> students go wrong.<span class="src"><b>verified</b> · live project, try it below</span></span></li>
+        </ol>
+        <div class="tally" id="tally"><span><b>5</b> claims</span><span><b>4</b> verified</span><span><b>1</b> corrected</span><span class="zero"><b>0</b> shipped wrong</span></div>
+      </div>
+      <p class="console-note">This intro was fact-checked against my resume before you read it. Catching the confident, wrong sentence before it ships is the job.</p>
+    </div>
   </div>
 </header>
 
-<section id="work">
+<!-- ───────────── SAMAJH ───────────── -->
+<section id="samajh">
   <div class="wrap">
-    <div class="sec-head">
-      <h2>Projects</h2>
-      <p>Things I designed and built myself. Screenshots are real, taken from the running apps.</p>
-    </div>
+    <div class="eyebrow">Project 01 · Samajh (समझ, "understanding")</div>
+    <h2 class="sec-title">Pick a wrong answer. Samajh tells you why.</h2>
+    <p class="sec-intro">Marks show how much went wrong. Samajh shows why. Every wrong option is tied to a specific misconception, so one short test tells a teacher what each student misunderstood and how to re-teach it. This is a real question from the app; try it.</p>
+    <div class="pills"><span class="pill live">Live</span><span class="pill">Launching to UP exam aspirants, Nov 2026</span><span class="pill">Hindi + English</span></div>
 
-    <!-- Samajh -->
-    <article class="case">
-      <div>
-        <div class="tag-row"><span class="pill live">Live</span><span class="pill plain">Launching to UP exam aspirants, Nov 2026</span></div>
-        <h3>Samajh: AI diagnostic testing &amp; exam prep</h3>
-        <p class="pitch">Marks show how much went wrong. Samajh shows <em>why</em>. Every wrong option is tied to a specific misconception, so one short test tells a teacher what each student misunderstood and how to re-teach it.</p>
-        <div class="flow" aria-label="How a question gets published">
-          <div class="step"><b>Draft</b><small>Gemini, JSON schema</small></div><span class="arr">→</span>
-          <div class="step"><b>Blind solve</b><small>second model</small></div><span class="arr">→</span>
-          <div class="step"><b>Key check</b><small>mismatch flagged</small></div><span class="arr">→</span>
-          <div class="step"><b>Teacher approves</b><small>then students see it</small></div>
+    <div class="grid-2">
+      <!-- interactive quiz -->
+      <div class="demo" id="quiz">
+        <div class="demo-head">
+          <span class="label" id="q-count">Class 10 · Trigonometry · 1 of 2</span>
+          <div class="seg" role="group" aria-label="Language">
+            <button type="button" data-lang="en" aria-pressed="true">English</button>
+            <button type="button" data-lang="hi" aria-pressed="false" lang="hi">हिंदी</button>
+          </div>
         </div>
-        <ul>
-          <li>Bilingual (Hindi and English) diagnostic tests, class reports and printable re-teach plans for schools, plus free full-length <strong>UP Super TET</strong> and <strong>UPPSC PCS</strong> mocks with negative marking, ranks and solutions.</li>
-          <li><strong>500+ questions</strong> across 51 chapter and exam banks. A hand spot-check of 65 AI-verified questions found <strong>2 errors</strong>, and a "report error" queue catches the rest.</li>
-          <li>LLM rubric grading for free-text "explain why" answers. If the model fails or is unsure, the answer goes to the teacher. It never invents a grade.</li>
-          <li>Model fallback chain for free-tier quota limits, CSP / CSRF / rate-limit protection, Postgres in production, 41 automated tests.</li>
+        <div class="demo-body">
+          <p class="q-context" id="q-context"></p>
+          <p class="q-text" id="q-text"></p>
+          <div class="opts" id="q-opts"></div>
+          <div class="diag" id="q-diag" aria-live="polite"><p class="hint" id="q-hint"></p></div>
+          <div class="q-foot"><span id="q-note">Questions and diagnoses are taken unchanged from Samajh's question bank.</span><button type="button" class="linkbtn" id="q-next">Next question →</button></div>
+        </div>
+      </div>
+
+      <!-- how it's built -->
+      <div>
+        <h3 style="font-size:22px;font-weight:800">How a question gets into the bank</h3>
+        <p style="color:var(--muted);margin-top:6px">AI writes fast and is confidently wrong sometimes. So no question reaches a student on one model's word.</p>
+        <ol class="pipe">
+          <li><span class="n">1</span><div><b>Draft</b><span>Gemini writes a chapter against a strict JSON schema: concepts, misconceptions, and options that each reveal one misconception.</span></div></li>
+          <li class="gate"><span class="n">2</span><div><b>Blind solve</b><span>A second model answers every question without seeing the key. Any disagreement is flagged.</span></div></li>
+          <li class="gate"><span class="n">3</span><div><b>Teacher approval</b><span>A human edits and approves before students see it. A "report error" queue catches anything left.</span></div></li>
+          <li><span class="n">4</span><div><b>Diagnose</b><span>Wrong answers roll up into a class report and a printable re-teach plan.</span></div></li>
+        </ol>
+        <div class="facts">
+          <div class="fact"><b>500+</b><span>bilingual questions in 51 banks</span></div>
+          <div class="fact"><b>2 / 65</b><span>errors in a hand spot-check</span></div>
+          <div class="fact"><b>41</b><span>automated tests</span></div>
+        </div>
+        <ul class="more">
+          <li>LLM rubric grading for free-text "explain why" answers. If the model fails, the answer goes to the teacher; it never invents a grade.</li>
+          <li>Full UP Super TET and UPPSC PCS mocks with negative marking, ranks and solutions in both languages.</li>
+          <li>Model fallback chain for free-tier quotas, CSP / CSRF / rate limits, Postgres in production.</li>
         </ul>
-        <div class="stack">Python · FastAPI · PostgreSQL (Neon) · Gemini · Render</div>
         <div class="links">
           <a href="https://samajh-xap4.onrender.com/" rel="noopener">Open the live app →</a>
-          <a href="https://samajh-xap4.onrender.com/exams" rel="noopener">Exam mocks</a>
           <a href="https://samajh-xap4.onrender.com/demo" rel="noopener">Demo school</a>
-          <span>Code is private; happy to walk through it.</span>
+          <span class="note">Python · FastAPI · PostgreSQL · Gemini. Code private; happy to walk through it.</span>
         </div>
       </div>
-      <figure class="shot">
-        <div class="frame"><div class="bar"><i></i><i></i><i></i></div>
-          <picture><source srcset="assets/samajh-report.webp" type="image/webp"><img src="assets/samajh-report.jpg" width="1280" height="800" loading="lazy" alt="Samajh class diagnostic report: 18 students, 71% average, 12 misconceptions, ranked by how many students hold each one, with a teaching tip for each."></picture>
-        </div>
-        <figcaption>Class report from the demo school (sample data, fictional students). Misconceptions are ranked by how many students hold them, each with a teaching move.</figcaption>
-      </figure>
-    </article>
+    </div>
 
-    <!-- Cricket -->
-    <article class="case flip">
+    <figure class="shot">
+      <div class="frame"><picture><source srcset="assets/samajh-report.webp" type="image/webp"><img src="assets/samajh-report.jpg" width="1280" height="800" loading="lazy" alt="Samajh class diagnostic report: 18 students, 71% average, 12 misconceptions ranked by how many students hold each one, with a teaching tip for each."></picture></div>
+      <figcaption>What a teacher gets: misconceptions ranked by how many students hold them, each with a teaching move. Demo school, sample data, fictional students.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ───────────── CRICKET ───────────── -->
+<section id="cricket">
+  <div class="wrap">
+    <div class="eyebrow">Project 02 · Real-time AI commentary</div>
+    <h2 class="sec-title">Ball by ball, in Hindi. Every line fact-checked against the score.</h2>
+    <p class="sec-intro">A live engine that turns match data into spoken Hindi commentary with four AI personas. These are real lines the engine generated during a scripted demo match; step through them.</p>
+
+    <div class="grid-2">
+      <div class="board" id="board" aria-live="polite">
+        <div class="board-top"><span>IND vs AUS · demo T20 · target 171</span><span class="live">REPLAY</span></div>
+        <div class="score">
+          <span class="team">IND</span>
+          <span class="runs" id="b-runs">131/4<small id="b-over">15.2</small></span>
+          <span class="need" id="b-need"><b>40 off 28</b>to win</span>
+        </div>
+        <div class="ballrow"><span class="chip W" id="b-chip">W</span><div><div class="over" id="b-label">15.2 · wicket</div><div class="call hi" lang="hi" id="b-call">आउट!</div></div></div>
+        <div class="commentary">
+          <div class="who"><span>ON COMMENTARY</span><b>Josh Bhai</b></div>
+          <p class="line" lang="hi" id="b-line">हवा में गई… और हेड ने लपक लिया! गिल 44 रन बनाकर आउट। स्टार्क को मिली बड़ी कामयाबी। भारत अब 131 रन पर 4 विकेट।</p>
+          <p class="gloss" id="b-gloss">“Up in the air… and Head takes it! Gill goes for 44. A big one for Starc. India 131 for 4.”</p>
+        </div>
+        <div class="board-foot">
+          <span class="check" id="b-check">✓ checked: 131/4 · wicket · 40 off 28</span>
+          <div class="board-btns"><button type="button" id="b-prev" aria-label="Previous ball">←</button><button type="button" class="primary" id="b-next">Next ball →</button></div>
+        </div>
+        <div class="dots" id="b-dots" aria-hidden="true"></div>
+      </div>
+
       <div>
-        <div class="tag-row"><span class="pill plain">Real-time</span><span class="pill plain">Hindi</span></div>
-        <h3>Live AI Hindi cricket commentary</h3>
-        <p class="pitch">Turns ball-by-ball match data into spoken Hindi commentary with four AI personas, a broadcast overlay and crowd sound, for live streams.</p>
-        <ul>
-          <li>Pipeline: feed → match-state engine → LLM writer → fact checker → text-to-speech → a "director" that times lines, cuts filler when a ball lands and handles breaks.</li>
-          <li><strong>Guardrails:</strong> JSON-schema outputs, a <strong>3.5 s</strong> timeout budget, and a fact checker that blocks any line contradicting the score or the ball's result. Templates take over when the LLM is slow or wrong, so commentary keeps going.</li>
-          <li>Multi-provider TTS (Google Chirp 3 HD, Sarvam, Edge) with retries and caching. Several matches run concurrently over WebSockets. A manual-scoring mode works when no data feed exists.</li>
-          <li>Every match is recorded and can be replayed offline to tune lines. Regression tests capture bugs found during a live final.</li>
+        <h3 style="font-size:22px;font-weight:800">What keeps it honest on air</h3>
+        <ol class="pipe">
+          <li><span class="n">1</span><div><b>Match state</b><span>Every ball updates a state engine: score, partnerships, milestones, streaks, the chase.</span></div></li>
+          <li><span class="n">2</span><div><b>Write</b><span>An LLM writes the line in the persona's voice, as JSON, inside a 3.5-second budget.</span></div></li>
+          <li class="gate"><span class="n">3</span><div><b>Fact check</b><span>The line is blocked if it contradicts the score or the ball's result. Templates take over, so commentary keeps going.</span></div></li>
+          <li><span class="n">4</span><div><b>Speak &amp; direct</b><span>Multi-provider TTS with retries and caching; a "director" times lines and cuts filler when a ball lands.</span></div></li>
+        </ol>
+        <ul class="more">
+          <li>Several matches run concurrently over WebSockets, each with its own broadcast page.</li>
+          <li>Manual-scoring mode for matches with no data feed; every match is recorded and can be replayed offline.</li>
+          <li>Regression tests written from bugs seen during a live final.</li>
         </ul>
-        <div class="stack">Python · FastAPI · WebSockets · Gemini · TTS · Web Audio · Docker</div>
         <div class="links">
           <a href="https://github.com/AmShubh45/Cricket_commentary" rel="noopener">Code on GitHub →</a>
+          <span class="note">Python · FastAPI · WebSockets · Gemini · TTS · Web Audio</span>
         </div>
       </div>
-      <figure class="shot">
-        <div class="frame"><div class="bar"><i></i><i></i><i></i></div>
-          <picture><source srcset="assets/cricket-broadcast.webp" type="image/webp"><img src="assets/cricket-broadcast.jpg" width="1280" height="720" loading="lazy" alt="Broadcast overlay: wagon wheel, win probability, batter on strike, the AI commentator Josh Bhai and the scoreboard."></picture>
-        </div>
-        <figcaption>The broadcast overlay during a scripted demo replay.</figcaption>
-      </figure>
-    </article>
+    </div>
 
-    <!-- Parth -->
-    <article class="case solo">
+    <figure class="shot">
+      <div class="frame"><picture><source srcset="assets/cricket-broadcast.webp" type="image/webp"><img src="assets/cricket-broadcast.jpg" width="1280" height="720" loading="lazy" alt="Broadcast overlay: wagon wheel, win probability, batter on strike, the AI commentator Josh Bhai and the scoreboard."></picture></div>
+      <figcaption>The full broadcast overlay that streamers add to OBS, during the same demo replay.</figcaption>
+    </figure>
+
+    <div class="parth">
       <div>
-        <div class="tag-row"><span class="pill live">Live</span><span class="pill plain">Open source</span></div>
-        <h3>Parth: Bhagavad Gita voice assistant</h3>
-        <p class="pitch">Talk to it and get guidance grounded in the Gita's verses, spoken back in Hindi.</p>
-        <ul>
-          <li>RAG with Gemini embeddings: a curated set of verses is embedded once, each question is matched by cosine similarity, with a keyword fallback when embeddings are unavailable.</li>
-          <li>Real-time voice over WebSockets with the Gemini Live API, per-user sessions and conversation history, deployed with Docker.</li>
-        </ul>
+        <div class="eyebrow">Project 03 · Parth</div>
+        <h3 style="margin-top:8px">A voice assistant grounded in the Bhagavad Gita</h3>
+        <p>Speak a question and get guidance drawn from the Gita's verses, answered in Hindi. Verses are embedded with Gemini and matched by cosine similarity, with a keyword fallback; voice runs in real time over WebSockets with the Gemini Live API.</p>
         <div class="stack">Node.js · Express · WebSockets · Gemini (Live API, embeddings) · Docker</div>
-        <div class="links">
-          <a href="https://parth-gita-assistant.onrender.com/" rel="noopener">Try it →</a>
-          <a href="https://github.com/AmShubh45/parth-gita-assistant" rel="noopener">Code on GitHub</a>
-        </div>
+        <div class="links"><a href="https://parth-gita-assistant.onrender.com/" rel="noopener">Try it →</a><a href="https://github.com/AmShubh45/parth-gita-assistant" rel="noopener">Code on GitHub</a></div>
       </div>
-    </article>
+      <div class="om" aria-hidden="true">ॐ</div>
+    </div>
   </div>
 </section>
 
+<!-- ───────────── EXPERIENCE ───────────── -->
 <section id="experience">
   <div class="wrap">
-    <div class="sec-head"><h2>Experience</h2></div>
-
-    <div class="job">
-      <div class="when">Oct 2025 – present<br>Remote, India</div>
-      <div>
-        <h3>Impetus Technologies</h3>
-        <div class="title">Generative AI Engineer</div>
-        <h4>Sales intelligence platform (RAG, in production)</h4>
-        <ul>
-          <li>Production RAG pipeline on AWS Bedrock: deal intelligence, win-probability analysis and objection handling for <span class="num">200+</span> sales users.</li>
-          <li>Deal-aware LLM response caching in PostgreSQL: repeat-query latency from <span class="num">35 s to 2 s</span>, <span class="num">3–5</span> fewer LLM calls per user. Redis per-user rate limiting to cap cost.</li>
-          <li>Daily AI nudges with prioritised insights and next actions across <span class="num">5,000+</span> deals.</li>
-        </ul>
-        <h4>Finance document intelligence (pilot)</h4>
-        <ul>
-          <li>LLM extraction on Qwen VLM for 5+ formats (PDF, images, Excel, PPTX), Qdrant search, Langfuse tracing.</li>
-          <li>Automated accuracy evaluation that compares each source PDF with its extraction and flags gaps. With QA feedback loops, accuracy went from <span class="num">60% to 85%+</span> on a 90+ document set.</li>
-        </ul>
-        <h4>Context engineering PoCs</h4>
-        <ul>
-          <li>Semantic definitions, metrics and a Turtle (RDF) ontology for Databricks Genie natural-language analytics; most of an end-to-end AWS Context Ontology Accelerator PoC.</li>
-        </ul>
+    <div class="eyebrow">Experience</div>
+    <h2 class="sec-title">Where I ship this for a living.</h2>
+    <div class="timeline">
+      <div class="job">
+        <div class="when">Oct 2025 – present<br>Remote, India</div>
+        <div>
+          <h3>Impetus Technologies</h3>
+          <div class="role">Generative AI Engineer</div>
+          <div class="wins">
+            <div class="win"><div class="ctx">Sales RAG · production</div><div class="big">35 s → 2 s</div><p>repeat-query latency with deal-aware LLM response caching, 3–5 fewer LLM calls per user.</p></div>
+            <div class="win"><div class="ctx">Document AI · pilot</div><div class="big">60% → 85%+</div><p>extraction accuracy, driven by an automated evaluation that compares each PDF with its extraction.</p></div>
+            <div class="win"><div class="ctx">Sales RAG · production</div><div class="big">200+<small>users</small></div><p>sales reps on AWS Bedrock RAG; daily AI nudges across 5,000+ deals.</p></div>
+          </div>
+          <ul>
+            <li>Qwen VLM extraction for 5+ formats, Qdrant search, Langfuse tracing; Redis per-user rate limiting to cap LLM cost.</li>
+            <li>Context engineering PoCs: semantic definitions, metrics and a Turtle (RDF) ontology for Databricks Genie; most of an end-to-end AWS Context Ontology Accelerator PoC.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="job">
+        <div class="when">Jan 2024 – Oct 2025<br>Pune, India</div>
+        <div>
+          <h3>Tata Consultancy Services</h3>
+          <div class="role">Python Developer · ETL &amp; Data Engineering</div>
+          <ul>
+            <li>RAG-based production support assistant over the team knowledge base.</li>
+            <li>Business-critical ETL pipelines 50% faster; PostgreSQL response times down 60%+ through query and index tuning.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="job">
+        <div class="when">2019 – 2023</div>
+        <div>
+          <h3>B.Tech, Computer Science</h3>
+          <div class="role">United College of Engineering &amp; Research, Prayagraj · TCS CodeVita Season 10: global rank 3,370, college rank 3rd</div>
+        </div>
       </div>
     </div>
 
-    <div class="job">
-      <div class="when">Jan 2024 – Oct 2025<br>Pune, India</div>
-      <div>
-        <h3>Tata Consultancy Services</h3>
-        <div class="title">Python Developer · ETL &amp; Data Engineering</div>
-        <ul>
-          <li>RAG-based production support assistant over the team knowledge base.</li>
-          <li>Business-critical ETL pipelines <span class="num">50%</span> faster through Python and SQL optimisation.</li>
-          <li>PostgreSQL query and index tuning: average response times down <span class="num">60%+</span>.</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="job">
-      <div class="when">2019 – 2023</div>
-      <div>
-        <h3>United College of Engineering &amp; Research, Prayagraj</h3>
-        <div class="title">B.Tech, Computer Science · TCS CodeVita Season 10: global rank 3,370, college rank 3rd</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="skills">
-  <div class="wrap">
-    <div class="sec-head"><h2>Skills</h2></div>
     <div class="skills">
-      <div><h3>LLM &amp; GenAI</h3><div class="chips"><span>RAG</span><span>Context engineering</span><span>LLM evaluation</span><span>LLM-as-judge</span><span>Guardrails</span><span>Structured outputs</span><span>Prompt engineering</span><span>Vision-language models</span><span>Text-to-speech</span></div></div>
-      <div><h3>Models &amp; platforms</h3><div class="chips"><span>AWS Bedrock</span><span>Google Gemini</span><span>Qwen VLM</span><span>Databricks Genie</span><span>Langfuse</span><span>Qdrant</span><span>FAISS</span><span>LangChain</span></div></div>
-      <div><h3>Backend</h3><div class="chips"><span>Python</span><span>SQL</span><span>FastAPI</span><span>Django REST</span><span>WebSockets</span><span>Celery</span><span>PySpark</span></div></div>
-      <div><h3>Data &amp; infra</h3><div class="chips"><span>PostgreSQL</span><span>Redis</span><span>Docker</span><span>Kubernetes</span><span>Airflow</span><span>AWS (S3, RDS, Redshift, Lambda, Glue, Athena)</span></div></div>
+      <div><h3>LLM &amp; GenAI</h3><div class="chips"><span>RAG</span><span>Context engineering</span><span>LLM evaluation</span><span>LLM-as-judge</span><span>Guardrails</span><span>Structured outputs</span><span>Vision-language models</span><span>Text-to-speech</span></div></div>
+      <div><h3>Models &amp; platforms</h3><div class="chips"><span>AWS Bedrock</span><span>Gemini</span><span>Qwen VLM</span><span>Databricks Genie</span><span>Langfuse</span><span>Qdrant</span><span>FAISS</span><span>LangChain</span></div></div>
+      <div><h3>Backend &amp; data</h3><div class="chips"><span>Python</span><span>SQL</span><span>FastAPI</span><span>WebSockets</span><span>Celery</span><span>PySpark</span><span>PostgreSQL</span><span>Redis</span><span>Docker</span><span>Kubernetes</span><span>Airflow</span><span>AWS</span></div></div>
     </div>
   </div>
 </section>
 
-<section id="contact">
-  <div class="wrap contact">
-    <h2>Get in touch</h2>
-    <p>Open to Generative AI / AI engineering roles. The fastest way to reach me is email.</p>
+<!-- ───────────── CONTACT ───────────── -->
+<section class="contact" id="contact">
+  <div class="wrap">
+    <div class="eyebrow" style="color:var(--amber)">Contact</div>
+    <h2 class="sec-title">Building something with LLMs? Let's talk.</h2>
+    <p class="sec-intro">Open to Generative AI and AI engineering roles. Email is the fastest way to reach me.</p>
     <div class="copy">
       <code id="email">shubhampandey45.sp@gmail.com</code>
-      <button class="btn" id="copy-btn" type="button">Copy</button>
+      <button class="btn primary" id="copy-btn" type="button">Copy email</button>
       <a class="btn" href="mailto:shubhampandey45.sp@gmail.com">Write an email</a>
+      <a class="btn" href="resume.pdf">Resume (PDF)</a>
     </div>
   </div>
 </section>
 </main>
 
-<footer>
-  <div class="wrap">© 2026 Shubham Pandey · Hand-written HTML, hosted on GitHub Pages.</div>
-</footer>
+<footer><div class="wrap"><span>© 2026 Shubham Pandey</span><span>Hand-written HTML, no frameworks. Hosted on GitHub Pages.</span></div></footer>
 
 <script>
-document.getElementById("copy-btn").addEventListener("click", async (e) => {
-  const btn = e.currentTarget, text = document.getElementById("email").textContent;
-  try { await navigator.clipboard.writeText(text); btn.textContent = "Copied"; }
-  catch (err) {
-    const r = document.createRange(); r.selectNodeContents(document.getElementById("email"));
-    const s = getSelection(); s.removeAllRanges(); s.addRange(r); btn.textContent = "Selected";
+(() => {
+  const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* ── 1. Hero fact-check console ── */
+  const claims = [...document.querySelectorAll("#claims .claim")];
+  const finals = claims.map(c => c.className);
+  const replay = document.getElementById("replay");
+  const tally = document.getElementById("tally");
+  let timers = [];
+  function runCheck() {
+    timers.forEach(clearTimeout); timers = [];
+    claims.forEach(c => { c.className = "claim pending"; c.querySelector(".mark").textContent = "·"; });
+    tally.style.opacity = "0";
+    claims.forEach((c, i) => {
+      const at = 500 + i * 900;
+      timers.push(setTimeout(() => { c.className = "claim checking"; c.querySelector(".mark").textContent = "?"; }, at));
+      timers.push(setTimeout(() => {
+        c.className = finals[i];
+        c.querySelector(".mark").textContent = finals[i].includes("bad") ? "✗" : "✓";
+      }, at + 600));
+    });
+    timers.push(setTimeout(() => { tally.style.transition = "opacity .4s"; tally.style.opacity = "1"; replay.hidden = false; }, 500 + claims.length * 900 + 200));
   }
-  setTimeout(() => { btn.textContent = "Copy"; }, 1800);
-});
+  if (!reduce) { runCheck(); } else { replay.hidden = false; }
+  replay.addEventListener("click", runCheck);
+
+  /* ── 2. Samajh quiz (content from Samajh's TRIG chapter) ── */
+  const MIS = {
+    size_dependence: { name: { en: "Thinks ratios depend on triangle size", hi: "अनुपात को त्रिभुज के आकार पर निर्भर मानना" },
+      why: { en: "The student thinks a bigger triangle means a bigger sin. Ratios depend only on the angle.", hi: "छात्र सोचता है बड़ा त्रिभुज = बड़ा sin। उसे नहीं पता कि अनुपात सिर्फ़ कोण पर निर्भर है।" },
+      fix: { en: "Have them compute sin in a 3-4-5 and a 6-8-10 triangle — the value is the same.", hi: "3-4-5 और 6-8-10 त्रिभुज बनवाकर दोनों में sin निकलवाएँ — मान एक ही आएगा।" } },
+    opp_adj_swap: { name: { en: "Confuses opposite and adjacent sides", hi: "सम्मुख और आसन्न भुजा में भ्रम" },
+      why: { en: "The student mixes up the side facing the angle (opposite) and the side touching it (adjacent).", hi: "छात्र कोण के सामने वाली भुजा (सम्मुख) और कोण से लगी भुजा (आसन्न) को पहचानने में गलती करता है।" },
+      fix: { en: "Put a finger on the angle first: the side across = opposite, the side touching it (not hypotenuse) = adjacent.", hi: "हर सवाल में पहले कोण पर उँगली रखें: सामने वाली भुजा = सम्मुख, कोण को छूने वाली (कर्ण के अलावा) = आसन्न।" } },
+    ratio_mixup: { name: { en: "Mixes up sin, cos and tan", hi: "sin, cos, tan के सूत्र आपस में मिलना" },
+      why: { en: "The student knows ratios are side divisions but not which ratio uses which sides.", hi: "छात्र को पता है कि अनुपात भुजाओं का भाग है, पर कौन-सा अनुपात कौन-सी भुजाएँ — यह पक्का नहीं।" },
+      fix: { en: "Use a memory hook (P/H, B/H, P/B) and do 5 quick ratio questions daily without notes.", hi: "याद करने की ट्रिक: 'पंडित बद्री प्रसाद, हर हर बोले' (P/H, B/H, P/B) — और 5 सवाल रोज़ बिना देखे।" } },
+    inverted_ratio: { name: { en: "Writes the ratio upside down", hi: "अनुपात उल्टा लिखना" },
+      why: { en: "The student picks the right sides but flips numerator and denominator (writes cosec for sin).", hi: "छात्र सही भुजाएँ चुनता है पर अंश और हर उलट देता है (sin की जगह cosec लिख देता है)।" },
+      fix: { en: "Remind: for sin and cos the hypotenuse is always at the bottom, so the value can't exceed 1.", hi: "याद दिलाएँ: sin, cos में कर्ण हमेशा नीचे (हर में) होता है, इसलिए इनका मान 1 से ज़्यादा नहीं हो सकता।" } }
+  };
+  const QS = [
+    { q: { en: "Two right triangles have the same angle θ. One has sides 3, 4, 5 and the other 6, 8, 10. In the bigger triangle, sin θ is —", hi: "दो समकोण त्रिभुजों में कोण θ बराबर है। पहले की भुजाएँ 3, 4, 5 हैं और दूसरे की 6, 8, 10। दूसरे त्रिभुज में sin θ —" },
+      ctx: null,
+      opts: [
+        { t: { en: "double the first", hi: "पहले का दोगुना" }, mis: "size_dependence" },
+        { t: { en: "half the first", hi: "पहले का आधा" }, mis: "size_dependence" },
+        { t: { en: "can't say without measuring", hi: "बिना नापे नहीं बता सकते" }, mis: null },
+        { t: { en: "equal to the first", hi: "पहले के बराबर" }, ok: true }
+      ], about: "size_dependence" },
+    { q: { en: "What is sin A?", hi: "sin A का मान क्या है?" },
+      ctx: { en: "In triangle ABC, angle B = 90°, AB = 3 cm, BC = 4 cm, AC = 5 cm.", hi: "त्रिभुज ABC में कोण B = 90°, AB = 3 सेमी, BC = 4 सेमी, AC = 5 सेमी।" },
+      opts: [
+        { t: { en: "4/5", hi: "4/5" }, ok: true },
+        { t: { en: "3/5", hi: "3/5" }, mis: "opp_adj_swap" },
+        { t: { en: "4/3", hi: "4/3" }, mis: "ratio_mixup" },
+        { t: { en: "5/4", hi: "5/4" }, mis: "inverted_ratio" }
+      ], about: "opp_adj_swap" }
+  ];
+  const UI = {
+    en: { hint: "Choose an option. Try a wrong one on purpose to see the diagnosis.", wrong: "Misconception detected", right: "Correct", neutral: "Wrong, but not diagnostic",
+          think: "What the student is thinking", fix: "What the teacher does next", rightBody: "Students who miss this usually hold this misconception:",
+          neutralBody: "This option is a plain wrong answer that doesn't point to one misconception. Samajh allows at most one such option per question, so nearly every mistake tells the teacher something.",
+          count: (i, n) => `Class 10 · Trigonometry · ${i} of ${n}`, next: "Next question →", note: "Questions and diagnoses are taken unchanged from Samajh's question bank." },
+    hi: { hint: "कोई विकल्प चुनें। जान-बूझकर गलत चुनकर देखें कि Samajh क्या पकड़ता है।", wrong: "गलत धारणा पकड़ी गई", right: "सही जवाब", neutral: "गलत, पर किसी एक धारणा से नहीं जुड़ा",
+          think: "बच्चा क्या सोच रहा है", fix: "शिक्षक आगे क्या करें", rightBody: "जो छात्र यह गलत करते हैं, उनकी आम गलत धारणा:",
+          neutralBody: "यह विकल्प सीधा गलत जवाब है जो किसी एक धारणा की ओर इशारा नहीं करता। Samajh हर सवाल में ऐसा ज़्यादा से ज़्यादा एक विकल्प रखता है, ताकि लगभग हर गलती शिक्षक को कुछ बताए।",
+          count: (i, n) => `कक्षा 10 · त्रिकोणमिति · ${i} / ${n}`, next: "अगला सवाल →", note: "सवाल और निदान Samajh के प्रश्न-बैंक से बिना बदलाव के लिए गए हैं।" }
+  };
+  let lang = "en", qi = 0, picked = null;
+  const $ = id => document.getElementById(id);
+  function diagHTML(kind, misKey) {
+    const u = UI[lang], m = misKey ? MIS[misKey] : null;
+    if (kind === "neutral") return `<div class="tag">${u.neutral}</div><p style="margin-top:8px;font-size:15px">${u.neutralBody}</p>`;
+    const head = kind === "right" ? `<div class="tag">✓ ${u.right}</div><p style="margin-top:6px;font-size:14.5px;color:var(--muted)">${u.rightBody}</p>` : `<div class="tag">✗ ${u.wrong}</div>`;
+    return `${head}<h4>${m.name[lang]}</h4><dl><div><dt>${u.think}</dt><dd>${m.why[lang]}</dd></div><div><dt>${u.fix}</dt><dd>${m.fix[lang]}</dd></div></dl>`;
+  }
+  function renderQuiz() {
+    const q = QS[qi], u = UI[lang];
+    $("q-count").textContent = u.count(qi + 1, QS.length);
+    $("q-next").textContent = u.next;
+    $("q-note").textContent = u.note;
+    const ctx = $("q-context");
+    ctx.textContent = q.ctx ? q.ctx[lang] : ""; ctx.hidden = !q.ctx;
+    $("q-text").textContent = q.q[lang];
+    const box = $("q-opts"); box.textContent = "";
+    q.opts.forEach((o, i) => {
+      const b = document.createElement("button");
+      b.type = "button"; b.className = "opt";
+      b.innerHTML = `<span class="k">${"ABCD"[i]}</span><span></span>`;
+      b.lastChild.textContent = o.t[lang];
+      if (picked !== null) {
+        if (i === picked) b.classList.add("picked", o.ok ? "right" : "wrong");
+        else if (o.ok) b.classList.add("reveal");
+      }
+      b.addEventListener("click", () => { picked = i; renderQuiz(); });
+      box.appendChild(b);
+    });
+    const d = $("q-diag");
+    if (picked === null) { d.className = "diag"; d.innerHTML = `<p class="hint">${u.hint}</p>`; return; }
+    const o = q.opts[picked];
+    if (o.ok) { d.className = "diag right fade"; d.innerHTML = diagHTML("right", q.about); }
+    else if (o.mis) { d.className = "diag wrong fade"; d.innerHTML = diagHTML("wrong", o.mis); }
+    else { d.className = "diag neutral fade"; d.innerHTML = diagHTML("neutral"); }
+  }
+  document.querySelectorAll("#quiz .seg button").forEach(b => b.addEventListener("click", () => {
+    lang = b.dataset.lang;
+    document.querySelectorAll("#quiz .seg button").forEach(x => x.setAttribute("aria-pressed", String(x === b)));
+    renderQuiz();
+  }));
+  $("q-next").addEventListener("click", () => { qi = (qi + 1) % QS.length; picked = null; renderQuiz(); });
+  renderQuiz();
+
+  /* ── 3. Cricket board (lines generated by the engine from the demo match) ── */
+  const BALLS = [
+    { over: "15.2", kind: "W", label: "wicket", runs: "131/4", need: [40, 28], call: "आउट!",
+      line: "हवा में गई… और हेड ने लपक लिया! गिल 44 रन बनाकर आउट। स्टार्क को मिली बड़ी कामयाबी। भारत अब 131 रन पर 4 विकेट।",
+      gloss: "Up in the air… and Head takes it! Gill goes for 44. A big one for Starc. India 131 for 4." },
+    { over: "15.5", kind: "NB", label: "no ball · free hit next", runs: "132/4", need: [39, 26], call: "नो बॉल! अगली गेंद फ्री हिट!",
+      line: "फुल टॉस, रिंकू सिंह ने धकेला, कवर की तरफ़।",
+      gloss: "No ball! Free hit next! Full toss, Rinku pushes it to cover." },
+    { over: "15.5", kind: "r6", chip: "6", label: "six · free hit", runs: "138/4", need: [33, 25], call: "बाहर! छक्का!",
+      line: "फुल टॉस, रिंकू सिंह ने पूरी ताक़त से मारा, मिडविकेट के ऊपर से। फ्री हिट का पूरा फ़ायदा उठाया! रिंकू सिंह की पहली बाउंड्री!",
+      gloss: "Gone! Six! Full toss, Rinku hits it with everything over midwicket. Full use of the free hit, and his first boundary!" },
+    { over: "16.2", kind: "r4", chip: "4", label: "four", runs: "145/4", need: [26, 22], call: "शानदार… चौका!",
+      line: "फ्लाइटेड गेंद, रिंकू सिंह ने स्वीप किया, फ़ाइन लेग की दिशा में, सीधा बाउंड्री। अब 26 रन चाहिए, 22 गेंदों में।",
+      gloss: "Lovely… four! Flighted, Rinku sweeps it fine for four. 26 needed off 22." },
+    { over: "16.6", kind: "", chip: "2", label: "2 runs · dropped catch", runs: "148/4", need: [23, 18], call: "दो रन।",
+      line: "पांड्या ने ड्राइव किया, डीप कवर की तरफ़। कैच छूटा! पांड्या को जीवनदान मिला है!",
+      gloss: "Two runs. Pandya drives to deep cover. Dropped! Pandya gets a life!" },
+    { over: "17.3", kind: "r4", chip: "4", label: "four · team 150", runs: "153/4", need: [18, 15], call: "चौका!",
+      line: "शॉर्ट गेंद, पांड्या ने कट किया, बैकवर्ड पॉइंट की दिशा में, सीधा बाउंड्री। भारत ने 150 का आँकड़ा पार किया।",
+      gloss: "Four! Short, Pandya cuts it past backward point. India are past 150." },
+    { over: "17.5", kind: "r6", chip: "6", label: "six · close finish", runs: "160/4", need: [11, 13], call: "ऊँचा… लंबा… और गया!",
+      line: "स्लोअर गेंद, रिंकू सिंह ने हवा में उठाकर मारा, लॉन्ग ऑफ़ के ऊपर से। अब 11 रन चाहिए, 13 गेंदें बाकी। ये गेंद अब पार्किंग में मिलेगी!",
+      gloss: "High… long… gone! Slower ball, Rinku lofts it over long-off. 11 off 13. They'll find that one in the car park!" },
+    { over: "17.6", kind: "", chip: "1", label: "1 run · over ends", runs: "161/4", need: [10, 12], call: "एक रन, आराम से।",
+      line: "फुल लेंथ गेंद, रिंकू सिंह ने धकेला, मिडविकेट की तरफ़। 10 रन, 12 गेंदें! मैच अब पूरी तरह रोमांच पर!",
+      gloss: "An easy single. Full, Rinku pushes it to midwicket. 10 off 12! This one's going to the wire!" }
+  ];
+  let bi = 0;
+  const dots = $("b-dots");
+  BALLS.forEach(() => dots.appendChild(document.createElement("i")));
+  function renderBall(animate) {
+    const b = BALLS[bi];
+    $("b-runs").firstChild.nodeValue = b.runs;
+    $("b-over").textContent = b.over;
+    $("b-need").innerHTML = `<b>${b.need[0]} off ${b.need[1]}</b>to win`;
+    const chip = $("b-chip"); chip.className = "chip " + b.kind; chip.textContent = b.chip || b.kind;
+    $("b-label").textContent = `${b.over} · ${b.label}`;
+    $("b-call").textContent = b.call;
+    $("b-line").textContent = b.line;
+    $("b-gloss").textContent = `“${b.gloss}”`;
+    $("b-check").textContent = `✓ checked: ${b.runs} · ${b.label.split(" · ")[0]} · ${b.need[0]} off ${b.need[1]}`;
+    [...dots.children].forEach((d, i) => d.classList.toggle("on", i <= bi));
+    if (animate) ["b-call", "b-line", "b-gloss", "b-chip"].forEach(id => { const el = $(id); el.classList.remove("fade"); void el.offsetWidth; el.classList.add("fade"); });
+  }
+  $("b-next").addEventListener("click", () => { bi = (bi + 1) % BALLS.length; renderBall(true); });
+  $("b-prev").addEventListener("click", () => { bi = (bi - 1 + BALLS.length) % BALLS.length; renderBall(true); });
+  renderBall(false);
+
+  /* ── 4. Copy email ── */
+  $("copy-btn").addEventListener("click", async (e) => {
+    const btn = e.currentTarget, el = $("email");
+    try { await navigator.clipboard.writeText(el.textContent); btn.textContent = "Copied ✓"; }
+    catch { const r = document.createRange(); r.selectNodeContents(el); const s = getSelection(); s.removeAllRanges(); s.addRange(r); btn.textContent = "Selected"; }
+    setTimeout(() => { btn.textContent = "Copy email"; }, 1800);
+  });
+})();
 </script>
 </body>
 </html>
