@@ -70,15 +70,15 @@ nav ul a:hover{color:var(--night-fg)}
 .hero .wrap{position:relative;display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:48px;align-items:center;padding-block:64px 72px}
 .hero .wrap > *{min-width:0}
 @media (max-width:900px){.hero .wrap{grid-template-columns:1fr;gap:36px;padding-block:44px 52px}}
-.kicker{font-family:var(--f-mono);font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--amber);margin-top:18px}
+.kicker{font-family:var(--f-mono);font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--amber);margin-top:6px}
 .status{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:600;color:#7EE2AE;background:rgba(76,203,143,.1);border:1px solid rgba(76,203,143,.28);padding:4px 11px;border-radius:99px}
 .status i{width:7px;height:7px;border-radius:50%;background:#4CCB8F;box-shadow:0 0 0 3px rgba(76,203,143,.25)}
-.hero h1{font-size:clamp(40px,6vw,66px);font-weight:800;line-height:1.02;margin-top:12px}
+.hero h1{font-size:clamp(40px,6vw,66px);font-weight:800;line-height:1.02;margin-top:22px}
 .hero h1 em{font-style:normal;color:var(--amber)}
-.name-line{display:flex;align-items:baseline;gap:12px;margin-top:22px;flex-wrap:wrap}
-.name-line b{font-family:var(--f-display);font-size:22px;font-weight:800}
-.name-line .dev{font-family:var(--f-hi-display);font-size:22px;color:var(--night-muted)}
-.lede{color:var(--night-muted);font-size:18px;max-width:52ch;margin-top:10px}
+.name-line{display:flex;align-items:baseline;gap:12px;margin-top:20px;flex-wrap:wrap}
+.name-line b{font-family:var(--f-display);font-size:clamp(24px,2.6vw,30px);font-weight:800;letter-spacing:-.01em}
+.name-line .dev{font-family:var(--f-hi-display);font-size:clamp(22px,2.4vw,27px);color:var(--night-muted)}
+.lede{color:var(--night-muted);font-size:18px;max-width:52ch;margin-top:18px}
 .lede strong{color:var(--night-fg);font-weight:600}
 .cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
 .btn{display:inline-flex;align-items:center;gap:8px;padding:11px 16px;border-radius:9px;font-weight:700;font-size:15px;text-decoration:none;border:1px solid var(--night-line);color:var(--night-fg);background:var(--night-2)}
@@ -104,6 +104,8 @@ nav ul a:hover{color:var(--night-fg)}
 .claim .src{display:block;font-size:11.5px;margin-top:2px;color:var(--night-muted)}
 .claim.ok .mark{color:#4CCB8F}
 .claim.ok .src b{color:#4CCB8F;font-weight:500}
+.claim .src a{color:#F7C46B;text-decoration:none;white-space:nowrap}
+.claim .src a:hover{text-decoration:underline}
 .claim.bad .mark{color:#F07272}
 .claim.bad .orig{text-decoration:line-through;text-decoration-color:#F07272;text-decoration-thickness:2px;color:var(--night-muted)}
 .claim.bad .src b{color:#F07272;font-weight:500}
@@ -121,7 +123,7 @@ nav ul a:hover{color:var(--night-fg)}
 .console-note{font-family:var(--f-body);font-size:13px;color:var(--night-muted);margin-top:12px}
 
 /* ───── sections ───── */
-section{padding-block:80px}
+section{padding-block:80px;scroll-margin-top:54px}
 section + section{border-top:1px solid var(--line)}
 .eyebrow{font-family:var(--f-mono);font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--amber-ink)}
 .sec-title{font-size:clamp(30px,4.2vw,46px);font-weight:800;line-height:1.05;margin-top:10px;max-width:22ch}
@@ -272,7 +274,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px}
     <a class="brand" href="#top"><i aria-hidden="true"></i>Shubham Pandey</a>
     <ul>
       <li><a href="#samajh">Samajh</a></li>
-      <li class="opt2"><a href="#cricket">Commentary</a></li>
+      <li class="opt2"><a href="#cricket">Cricket AI</a></li>
       <li class="nav-opt"><a href="#experience">Experience</a></li>
       <li><a class="nav-cta" href="resume.pdf">Resume</a></li>
     </ul>
@@ -285,9 +287,9 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px}
   <div class="wrap">
     <div>
       <div class="status"><i aria-hidden="true"></i>Open to AI engineering roles</div>
+      <div class="name-line"><b>Shubham Pandey</b><span class="dev" lang="hi">शुभम पांडेय</span></div>
       <div class="kicker">Generative AI Engineer · India</div>
       <h1>I build LLM systems that <em>check their own work.</em></h1>
-      <div class="name-line"><b>Shubham Pandey</b><span class="dev" lang="hi">शुभम पांडेय</span></div>
       <p class="lede">Retrieval, document extraction, evaluation and guardrails, on a solid <strong>Python and data-engineering</strong> base. GenAI platforms at Impetus Technologies today; ETL and data pipelines at TCS before that.</p>
       <div class="cta">
         <a class="btn primary" href="resume.pdf">
@@ -301,15 +303,15 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px}
       <div class="console" role="region" aria-label="Fact-check of this introduction">
         <div class="console-bar"><i></i><i></i><i></i><span class="title">fact_check(intro_draft, source="resume.pdf")</span><button type="button" id="replay" hidden>replay</button></div>
         <ol class="claims" id="claims">
-          <li class="claim ok"><span class="mark" aria-hidden="true">✓</span><span class="text">Generative AI Engineer at Impetus Technologies.<span class="src"><b>verified</b> · experience, Oct 2025 – present</span></span></li>
-          <li class="claim ok"><span class="mark" aria-hidden="true">✓</span><span class="text">Cut repeat-query latency from 35 s to 2 s with LLM response caching.<span class="src"><b>verified</b> · sales intelligence platform</span></span></li>
-          <li class="claim bad"><span class="mark" aria-hidden="true">✗</span><span class="text"><span class="orig">Has 10+ years of experience building AI systems.</span><span class="src"><b>rejected</b> · contradicts source: 2.5+ years</span><span class="fix">2.5+ years in industry, building with LLMs every day.</span></span></li>
-          <li class="claim ok"><span class="mark" aria-hidden="true">✓</span><span class="text">Raised document-extraction accuracy from 60% to 85%+.<span class="src"><b>verified</b> · finance document pilot</span></span></li>
-          <li class="claim ok"><span class="mark" aria-hidden="true">✓</span><span class="text">Built Samajh: tests that show <i>why</i> students go wrong.<span class="src"><b>verified</b> · live project, try it below</span></span></li>
+          <li class="claim ok"><span class="mark" aria-hidden="true">✓</span><span class="text">Generative AI Engineer at Impetus Technologies.<span class="src"><b>verified</b> · Oct 2025 – present · <a href="#experience">proof ↓</a></span></span></li>
+          <li class="claim ok"><span class="mark" aria-hidden="true">✓</span><span class="text">Cut repeat-query latency from 35 s to 2 s with LLM response caching.<span class="src"><b>verified</b> · sales RAG, in production · <a href="#experience">proof ↓</a></span></span></li>
+          <li class="claim bad"><span class="mark" aria-hidden="true">✗</span><span class="text"><span class="orig">Passionate, results-driven AI expert with a proven track record.</span><span class="src"><b>rejected</b> · adjectives, no evidence</span><span class="fix">Evidence instead: the 4 claims around it, and 2 projects you can try below.</span></span></li>
+          <li class="claim ok"><span class="mark" aria-hidden="true">✓</span><span class="text">Raised document-extraction accuracy from 60% to 85%+.<span class="src"><b>verified</b> · finance document pilot · <a href="#experience">proof ↓</a></span></span></li>
+          <li class="claim ok"><span class="mark" aria-hidden="true">✓</span><span class="text">Built Samajh: tests that show <i>why</i> students go wrong.<span class="src"><b>verified</b> · live project · <a href="#samajh">try it ↓</a></span></span></li>
         </ol>
-        <div class="tally" id="tally"><span><b>5</b> claims</span><span><b>4</b> verified</span><span><b>1</b> corrected</span><span class="zero"><b>0</b> shipped wrong</span></div>
+        <div class="tally" id="tally"><span><b>5</b> claims</span><span><b>4</b> verified</span><span><b>1</b> rejected (no evidence)</span><span class="zero"><b>0</b> shipped</span></div>
       </div>
-      <p class="console-note">This intro was fact-checked against my resume before you read it. Catching the confident, wrong sentence before it ships is the job.</p>
+      <p class="console-note">Every claim here links to its proof. The one with no evidence didn't make it. That check, before anything ships, is the job.</p>
     </div>
   </div>
 </header>
